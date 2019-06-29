@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "../../images/logo/logoFinal.png";
-import M from 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css';
+import M from 'materialize-css';
+import "materialize-css/dist/css/materialize.min.css";
 
 class Nav extends Component {
 
