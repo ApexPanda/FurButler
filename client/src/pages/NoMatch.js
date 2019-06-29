@@ -2,16 +2,16 @@ import React from "react";
 
 function NoMatch() {
     return (
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m6 offset-m3">
-                    <div class="card butlr-blue">
-                        <div class="card-content white-text">
-                            <span class="card-title font3">Oops...</span>
-                            <h3 class="font2">404 Not Found <span role="img" aria-label="Face with rolling eyes"> 🙄</span></h3>
+        <div className="container">
+            <div className="row">
+                <div className="col s12 m6 offset-m3">
+                    <div className="card butlr-blue">
+                        <div className="card-content white-text">
+                            <span className="card-title font3">Oops...</span>
+                            <h3 className="font2">404 Not Found <span role="img" aria-label="Face with rolling eyes"> 🙄</span></h3>
                         </div>
-                        <div class="card-action">
-                            <a href="/" class="waves-effect waves-light btn butlr-green font2"><i class="material-icons left">home</i>Back
+                        <div className="card-action">
+                            <a href="/" className="waves-effect waves-light btn butlr-green font2"><i className="material-icons left">home</i>Back
             To Home</a>
                         </div>
                     </div>
