@@ -16,7 +16,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("build"));
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -68,7 +68,6 @@ var syncOptions = {
 if (process.env.NODE_ENV === "development") {
   syncOptions.force = true;
 }
-
 
 // Send every request to the React app
 // Define any API routes before this runs

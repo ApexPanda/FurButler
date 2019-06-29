@@ -8,8 +8,6 @@ var bcrypt = require("bcrypt");
 
 var hash = "$2b$10$69SrwAoAUNC5F.gtLEvrNON6VQ5EX89vNqLEqU655Oy9PeT/HRM/a";
 
-
-
 //=======================================================================================
 
 var redirectLogin = function (req, res, next) {
