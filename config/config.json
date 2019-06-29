@@ -1,14 +1,15 @@
-"development": {
+{ 
+  "development": {
     "username": "root",
     "password": "password",
-    "database": "	g57v06z3jkgspbrm",
+    "database": "g57v06z3jkgspbrm",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "Password",
-    "database": "	g57v06z3jkgspbrm",
+    "database": "g57v06z3jkgspbrm",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
