@@ -1,16 +1,16 @@
-var express = require("express");
-var express = require("express");
-var router = express.Router();
-var db = require("../models");
+const express = require("express");
+const express = require("express");
+const router = express.Router();
+const db = require("../models");
 
 // Bcrypt==========================
-var bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
-var hash = "$2b$10$69SrwAoAUNC5F.gtLEvrNON6VQ5EX89vNqLEqU655Oy9PeT/HRM/a";
+const hash = "$2b$10$69SrwAoAUNC5F.gtLEvrNON6VQ5EX89vNqLEqU655Oy9PeT/HRM/a";
 
 //=======================================================================================
 
-var redirectLogin = function (req, res, next) {
+const redirectLogin = function (req, res, next) {
   console.log("REDIRECT SESSION: ", req.session);
   if (!req.session.userId) {
     res.redirect("/signUp");
@@ -52,27 +52,27 @@ router.get("/signUp", function (req, res) {
 router.get("/userProfile", function (req, res) {
   console.log(req.query);
   console.log(req.query.id);
-  var users = db.User.findAll({
+  const users = db.User.findAll({
     where: {
       id: req.query.id
     }
   });
 
-  var pets = db.Pet.findAll({
+  const pets = db.Pet.findAll({
     where: {
       // eslint-disable-next-line camelcase
       owner_id: req.query.id
     }
   });
 
-  var reviews = db.Review.findAll({
+  const reviews = db.Review.findAll({
     where: {
       // eslint-disable-next-line camelcase
       owner_id: req.query.id
     }
   });
 
-  var posts = db.Post.findAll({
+  const posts = db.Post.findAll({
     where: {
       // eslint-disable-next-line camelcase
       owner_id: req.query.id
@@ -105,20 +105,20 @@ router.get("/userProfile", function (req, res) {
 router.get("/testChange", function (req, res) {
   console.log(req.query);
   console.log(req.query.id);
-  var users = db.User.findAll({
+  const users = db.User.findAll({
     where: {
       id: req.query.id
     }
   });
 
-  var pets = db.Pet.findAll({
+  const pets = db.Pet.findAll({
     where: {
       // eslint-disable-next-line camelcase
       owner_id: req.query.id
     }
   });
 
-  var reviews = db.Review.findAll({
+  const reviews = db.Review.findAll({
     where: {
       // eslint-disable-next-line camelcase
       author_id: req.query.id
@@ -214,8 +214,8 @@ router.get("/dashboard", redirectLogin, function (req, res) {
 
 // login route
 router.post("/api/login", function (req, res) {
-  var email = req.body.email;
-  var password = req.body.password;
+  const email = req.body.email;
+  const password = req.body.password;
   console.log(password);
   console.log(email);
 
@@ -244,7 +244,7 @@ router.post("/api/login", function (req, res) {
 
 
 
-            var userObj = {
+            const userObj = {
               id: dbUser.dataValues.id,
               firstName: dbUser.dataValues.first_name,
               lastName: dbUser.dataValues.last_name,

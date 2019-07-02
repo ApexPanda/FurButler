@@ -1,14 +1,14 @@
-// var connection = require("../config/connection.js");
-var exports = module.exports = {};
+// const connection = require("../config/connection.js");
+const exports = module.exports = {};
 
 /* eslint-disable prettier/prettier */
 
 // register review route
 exports.registerReview = function (req, res) {
   // should add date as current time 
-  var today = new Date();
+  const today = new Date();
   // object for the review 
-  var reviews = {
+  const reviews = {
     "title": DataTypes.STRING,
     "rating": DataTypes.INTEGAR,
     "review": DataTypes.STRING,

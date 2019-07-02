@@ -1,14 +1,14 @@
-// var connection = require("../config/connection.js");
-var exports = module.exports = {};
+// const connection = require("../config/connection.js");
+const exports = module.exports = {};
 
 /* eslint-disable prettier/prettier */
 
 // register post route
 exports.registerPost = function (req, res) {
   // should add date as current time 
-  var today = new Date();
+  const today = new Date();
   // object for the post 
-  var posts = {
+  const posts = {
     "title": DataTypes.STRING,
     "rating": DataTypes.INTEGAR,
     "post": DataTypes.STRING,

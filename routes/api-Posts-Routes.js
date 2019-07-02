@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
-var db = require("../models");
-// var connection = require("../config/connection.js");
+const db = require("../models");
+// const connection = require("../config/connection.js");
 
 module.exports = function (app) {
   // Get all posts

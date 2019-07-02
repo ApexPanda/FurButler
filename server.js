@@ -59,7 +59,7 @@ require("./routes/api-Pet-Routes")(app);
 require("./routes/api-Review-Routes")(app);
 require("./routes/api-Posts-Routes")(app);
 
-var syncOptions = {
+const syncOptions = {
   force: false
 };
 

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 module.exports = function (sequelize, DataTypes) {
-    var Pet = sequelize.define("Pet", {
+    const Pet = sequelize.define("Pet", {
       pet_name: DataTypes.STRING,
       owner_id: DataTypes.INTEGER,
       pet_type: DataTypes.STRING,
