@@ -1,4 +1,4 @@
-// var connection = require("../config/connection.js");
+// const connection = require("../config/connection.js");
 const exports = module.exports = {};
 
 /* eslint-disable prettier/prettier */

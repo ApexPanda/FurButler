@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 const db = require("../models");
-// var connection = require("../config/connection.js");
+// const connection = require("../config/connection.js");
 
 module.exports = function (app) {
   // Get all reviews
