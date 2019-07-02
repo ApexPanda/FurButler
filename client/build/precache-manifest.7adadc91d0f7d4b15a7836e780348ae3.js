@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/static/media/sitters.605d34f4.jpg"
   },
   {
-    "revision": "211091d153ef5e186486",
-    "url": "/static/css/main.9cfcf13d.chunk.css"
+    "revision": "1dd7850b2cb91226107b",
+    "url": "/static/css/main.5dd4d041.chunk.css"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/static/media/profile-header.c57efe8e.png"
   },
   {
-    "revision": "006b07f44047d9394493",
+    "revision": "15528c4bc86d9d89c30a",
     "url": "/static/js/2.71e4f515.chunk.js"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/static/media/walkers.a8985902.jpg"
   },
   {
-    "revision": "211091d153ef5e186486",
-    "url": "/static/js/main.b6a6807a.chunk.js"
+    "revision": "1dd7850b2cb91226107b",
+    "url": "/static/js/main.6d354300.chunk.js"
   },
   {
     "revision": "ab17741c5248af49ea4be6b0dc42322c",
@@ -56,11 +56,11 @@ self.__precacheManifest = [
     "url": "/static/media/pet_pattern.486e6934.png"
   },
   {
-    "revision": "006b07f44047d9394493",
-    "url": "/static/css/2.5cb9dd33.chunk.css"
+    "revision": "15528c4bc86d9d89c30a",
+    "url": "/static/css/2.d3191a9e.chunk.css"
   },
   {
-    "revision": "637df4445ca374e0b84f74bbe9033911",
+    "revision": "8e9ead874324f35f758c9ae02c99618a",
     "url": "/index.html"
   }
 ];

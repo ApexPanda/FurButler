@@ -1,11 +1,11 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "FurButlr",
+  "name": "Fur Butlr",
   "icons": [
     {
-      "src": "",
-      "sizes": "",
-      "type": ""
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png"
     }
   ],
   "start_url": "./index.html",

@@ -1,4 +1,4 @@
-var bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 // Hash password
 exports.cryptPassword = function(password, callback) {

@@ -1,10 +1,10 @@
 
 /* eslint-disable camelcase */
-var db = require("../models");
-// var connection = require("../config/connection.js");
+const db = require("../models");
+// const connection = require("../config/connection.js");
 
-var bcrypt = require("bcrypt");
-var saltRounds = 10;
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 
 module.exports = function (app) {
@@ -50,7 +50,7 @@ module.exports = function (app) {
 
   // Create a new user
   app.post("/api/users", function (req, res) {
-    var password = req.body.password;
+    const password = req.body.password;
     bcrypt.hash(password, saltRounds)
       .then(function (hash) {
         req.body.password = hash;

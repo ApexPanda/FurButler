@@ -1,14 +1,14 @@
 // var connection = require("../config/connection.js");
-var exports = module.exports = {};
+const exports = module.exports = {};
 
 /* eslint-disable prettier/prettier */
 
 // register pet route
 exports.registerPet = function (req, res) {
   // should add date as current time 
-  var today = new Date();
+  const today = new Date();
   // object for the pet 
-  var pets = {
+  const pets = {
     "pet_name": DataTypes.STRING,
     "owner_id": DataTypes.INTEGAR,
     "pet_type": DataTypes.STRING,

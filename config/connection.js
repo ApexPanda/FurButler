@@ -1,7 +1,7 @@
-var mysql = require("mysql");
+const mysql = require("mysql");
 
 // eslint-disable-next-line no-unused-vars
-var connection;
+const connection;
 
 if (process.env.JAWSDB_URL) {
   // Database is JawsDB on Heroku

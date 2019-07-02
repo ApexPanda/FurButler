@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Review = sequelize.define("Review", {
+  const Review = sequelize.define("Review", {
       title: DataTypes.STRING,
       rating: DataTypes.INTEGER,
       review: DataTypes.TEXT,
