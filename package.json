@@ -26,6 +26,7 @@
     "express-session": "^1.16.2",
     "helmet": "^3.18.0",
     "if-env": "^1.0.4",
+    "mysql2": "^1.6.5",
     "path": "^0.12.7",
     "react": "^16.8.6",
     "react-router-dom": "^5.0.1",
