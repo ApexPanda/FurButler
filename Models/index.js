@@ -9,7 +9,7 @@ const config = require(__dirname + "/../config/config.json")[env];
 const dbSequelize = {};
 
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  var sequelize = new Sequelize(process.env.MYSQL_URL);
 } else {
   var sequelize = new Sequelize(
     config.database,
