@@ -34,6 +34,7 @@
     "path": "^0.12.7",
     "react": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "sequelize": "^5.9.0"
+    "sequelize": "^5.9.0",
+    "serverless-mysql": "^1.4.0"
   }
 }
