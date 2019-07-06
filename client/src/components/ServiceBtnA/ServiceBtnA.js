@@ -1,37 +1,25 @@
 import React from "react";
-import Groomers from "../images/site/groomers.jpg"
-import Walkers from "../images/site/walkers.jpg"
-import Sitters from "../images/site/sitters.jpg"
-import Vets from "../images/site/vets.jpg"
-import Kennels from "../images/site/kennels.jpg"
-import Parks from "../images/site/parks.jpg"
-import Owners from "../images/site/owners.jpg"
+import Walkers from "../../images/site/walkers.jpg"
+import Sitters from "../../images/site/sitters.jpg"
+import Kennels from "../../images/site/kennels.jpg"
+import Parks from "../../images/site/parks.jpg"
 
-function ServiceButton(props) {
+function ServiceBtnA(props) {
 
     let imageUrl
 
     switch (props.role) {
-        case "Groomers":
-            imageUrl = Groomers
-            break;
         case "Walkers":
             imageUrl = Walkers
             break;
         case "Sitters":
             imageUrl = Sitters
             break;
-        case "Vets":
-            imageUrl = Vets
-            break;
         case "Kennels":
             imageUrl = Kennels
             break;
         case "Parks":
             imageUrl = Parks
-            break;
-        case "Owners":
-            imageUrl = Owners
             break;
         default:
         // code block
@@ -54,4 +42,4 @@ function ServiceButton(props) {
     );
 }
 
-export default ServiceButton;
+export default ServiceBtnA;

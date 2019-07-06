@@ -1275,7 +1275,7 @@ You can read the [Enzyme documentation](http://airbnb.io/enzyme/) for more testi
 
 Here is an example from Enzyme documentation that asserts specific output, rewritten to use Jest matchers:
 
-```js
+<!-- ```js
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
@@ -1286,7 +1286,7 @@ it('renders welcome message', () => {
   // expect(wrapper.contains(welcome)).to.equal(true);
   expect(wrapper.contains(welcome)).toEqual(true);
 });
-```
+``` -->
 
 All Jest matchers are [extensively documented here](http://facebook.github.io/jest/docs/expect.html).<br>
 Nevertheless you can use a third-party assertion library like [Chai](http://chaijs.com/) if you want to, as described below.
