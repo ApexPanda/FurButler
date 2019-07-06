@@ -34,7 +34,14 @@
     "path": "^0.12.7",
     "react": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "sequelize": "^5.9.0",
-    "serverless-mysql": "^1.4.0"
-  }
+    "sequelize": "^5.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ApexPanda/FurButler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ApexPanda/FurButler/issues"
+  },
+  "homepage": "https://github.com/ApexPanda/FurButler#readme"
 }
