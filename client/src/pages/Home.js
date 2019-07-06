@@ -1,5 +1,6 @@
 import React from "react";
-import ServiceButton from "../components/ServiceButton";
+import ServiceBtnA from "../components/ServiceBtnA";
+import ServiceBtnB from "../components/ServiceBtnB";
 
 function Home() {
     return (
@@ -13,31 +14,31 @@ function Home() {
             </div>
 
             <div className="row">
-                <ServiceButton
+                <ServiceBtnB
                     role="Groomers"
                     url="./profileResults?role=Groomer"
                 />
-                <ServiceButton
+                <ServiceBtnA
                     role="Walkers"
                     url="./profileResults?role=Walker"
                 />
-                <ServiceButton
+                <ServiceBtnA
                     role="Sitters"
                     url="./profileResults?role=Sitter"
                 />
-                <ServiceButton
+                <ServiceBtnB
                     role="Vets"
                     url="./profileResults?role=Veterinarian"
                 />
-                <ServiceButton
+                <ServiceBtnA
                     role="Kennels"
                     url="./profileResults?role=Kennel"
                 />
-                <ServiceButton
+                <ServiceBtnA
                     role="Parks"
                     url="./profileResults?role=Park"
                 />
-                <ServiceButton
+                <ServiceBtnB
                     role="Owners"
                     url="./profileResults?role=Owner"
                 />
