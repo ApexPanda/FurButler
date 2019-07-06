@@ -15,9 +15,9 @@
       }
     ],
     "env": {
-      "MYSQL_HOST": "@mysql_host",
-      "MYSQL_USER": "@mysql_user",
-      "MYSQL_PASSWORD": "@mysql_password",
-      "MYSQL_DATABASE": "@mysql_database"
+      "MYSQL_HOST": "k2pdcy98kpcsweia.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+      "MYSQL_USER": "gdptcem6wezx7agn",
+      "MYSQL_PASSWORD": "ecux3daeieta8v2k",
+      "MYSQL_DATABASE": "g57v06z3jkgspbrm"
     }
   }
