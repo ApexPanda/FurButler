@@ -1,0 +1,23 @@
+
+{
+    "name": "fur-butlr",
+    "version": 2,
+    "name": "next-mysql",
+    "alias": "next-mysql.now.sh",
+    "builds": [
+      { "src": "api/**/*.js", "use": "@now/node" },
+      { "src": "next.config.js", "use": "@now/next" }
+    ],
+    "routes": [
+      {
+        "src": "/api/profiles/(?<id>[^/]*)",
+        "dest": "api/profiles/profile.js?id=$id"
+      }
+    ],
+    "env": {
+      "MYSQL_HOST": "@mysql_host",
+      "MYSQL_USER": "@mysql_user",
+      "MYSQL_PASSWORD": "@mysql_password",
+      "MYSQL_DATABASE": "@mysql_database"
+    }
+  }

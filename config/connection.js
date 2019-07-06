@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 
 // eslint-disable-next-line no-unused-vars
-const connection;
+let connection;
 
 if (process.env.JAWSDB_URL) {
   // Database is JawsDB on Heroku
@@ -13,6 +13,6 @@ if (process.env.JAWSDB_URL) {
     host: "localhost",
     user: "root",
     password: "Password",
-    database: "	g57v06z3jkgspbrm"
+    database: "g57v06z3jkgspbrm"
   });
 }
