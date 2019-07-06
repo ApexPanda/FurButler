@@ -6,7 +6,6 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const dbSequelize = require("./models");
-const db = require('./next-mysql/lib/db');
 
 // Login Routes
 const loginRouter = require("./routes/userLoginRoutes");

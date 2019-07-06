@@ -10,8 +10,8 @@
     ],
     "routes": [
       {
-        "src": "/api/profiles/(?<id>[^/]*)",
-        "dest": "api/profiles/profile.js?id=$id"
+        "src": "/api/users/(?<id>[^/]*)",
+        "dest": "api/users/user.js?id=$id"
       }
     ],
     "env": {

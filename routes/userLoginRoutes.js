@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require('../next-mysql/lib/db');
+const db = require('../config/lib/db');
 
 // Bcrypt==========================
 const bcrypt = require("bcrypt");
