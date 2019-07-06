@@ -16,31 +16,31 @@ function Home() {
             <div className="row">
                 <ServiceBtnB
                     role="Groomers"
-                    url="./profileResults?role=Groomer"
+                    url="/results/Groomer"
                 />
                 <ServiceBtnA
                     role="Walkers"
-                    url="./profileResults?role=Walker"
+                    url="/results/Walker"
                 />
                 <ServiceBtnA
                     role="Sitters"
-                    url="./profileResults?role=Sitter"
+                    url="/results/Sitter"
                 />
                 <ServiceBtnB
                     role="Vets"
-                    url="./profileResults?role=Veterinarian"
+                    url="/results/Veterinarian"
                 />
                 <ServiceBtnA
                     role="Kennels"
-                    url="./profileResults?role=Kennel"
+                    url="/results/Sitter"
                 />
                 <ServiceBtnA
                     role="Parks"
-                    url="./profileResults?role=Park"
+                    url="/results/Park"
                 />
                 <ServiceBtnB
                     role="Owners"
-                    url="./profileResults?role=Owner"
+                    url="/results/Owner"
                 />
             </div>
 

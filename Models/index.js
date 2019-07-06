@@ -25,13 +25,8 @@ fs.readdirSync(__dirname)
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
     );
   })
-<<<<<<< HEAD
   .forEach(function (file) {
-    const model = sequelize.import(path.join(__dirname, file));
-=======
-  .forEach(function(file) {
     var model = sequelize.import(path.join(__dirname, file));
->>>>>>> 4bb22d587603fe3c25fd27bba6a3643997633e1d
     db[model.name] = model;
   });
 
