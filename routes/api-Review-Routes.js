@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const db = require("../models");
+const db = require('../next-mysql/lib/db');
 // var connection = require("../config/connection.js");
 
 module.exports = function (app) {
