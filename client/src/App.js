@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Nav from "./components/Nav"
 import "materialize-css/dist/css/materialize.min.css";
+import M from 'materialize-css';
+import Nav from "./components/Nav"
 import Home from "./pages/Home";
 import Results from "./pages/Results";
 import Profile from "./pages/Profile";
@@ -10,6 +11,12 @@ import NoMatch from "./pages/NoMatch";
 import "./App.css";
 
 class App extends Component {
+  
+  componentDidMount() {
+    //Auto initialize all materialize components
+    M.AutoInit();
+  }
+
   render() {
     return (
       <Router>

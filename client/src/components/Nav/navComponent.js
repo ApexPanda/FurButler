@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import logo from "../../images/logo/logoFinal.png";
-import M from 'materialize-css';
+// import M from 'materialize-css';
 
 class Nav extends Component {
 
-    componentDidMount() {
-        //Auto initialize all materialize components
-        M.AutoInit();
-    }
+    // componentDidMount() {
+    //     //Auto initialize all materialize components
+    //     M.AutoInit();
+    // }
 
     render() {
         return (
