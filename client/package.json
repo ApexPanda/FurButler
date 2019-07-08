@@ -2,7 +2,7 @@
   "name": "mern",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://3001/",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "materialize-css": "^1.0.0",
     "react": "^16.6.3",
