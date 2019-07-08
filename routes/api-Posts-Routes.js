@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const db = require("../models");
+const db = require("../Models");
 // const connection = require("../config/connection.js");
 
 module.exports = function (app) {
