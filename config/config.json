@@ -2,14 +2,14 @@
   "development": {
     "username": "root",
     "password": "password",
-    "database": "qprlggxeliat6biw",
+    "database": "ol3j0cn1ayza2tod",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "Password",
-    "database": "qprlggxeliat6biw",
+    "database": "ol3j0cn1ayza2tod",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false

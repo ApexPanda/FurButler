@@ -1,4 +1,4 @@
-USE qprlggxeliat6biw;
+USE ol3j0cn1ayza2tod;
 
 INSERT INTO users(first_name, last_name, service_provider, pet_owner, role, email, password, image, about_me, location, created, modified) VALUES ("Betsy", "Smith", 0, 1, "Owner", "betsy.smith@gmail.com", "password234", "http://www.yarramalongclydesdales.com.au/wp-content/uploads/2017/04/person-1.jpg", "I love pets! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "Provo, Utah", "2019-05-01 12:00:00", "2019-05-01 12:00:00");
 INSERT INTO users(first_name, last_name, service_provider, pet_owner, role, email, password, image, about_me, location, created, modified) VALUES ("John", "Hammerford", 0, 1, "Owner", "anemail@yahoo.com", "passwor234234", "http://www.yarramalongclydesdales.com.au/wp-content/uploads/2017/04/person-1.jpg", "I love dogs!", "Orem, Utah", "2019-05-01 12:00:00", "2019-05-01 12:00:00");
