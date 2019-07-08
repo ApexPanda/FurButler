@@ -11,11 +11,11 @@ class Results extends Component {
     };
 
     componentDidMount() {
-        this.loadBooks();
+        this.loadResults();
         console.log(this.state.role)
     }
 
-    loadBooks = () => {
+    loadResults = () => {
         API.getRole(this.state.role)
             .then(res =>
                 this.setState({ users: res.data })
