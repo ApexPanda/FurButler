@@ -1,30 +1,25 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Signup extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            firstName: "",
-            lastName: "",
-            role: "",
-            email: "",
-            password: "",
-            clientType: "petOwner",
-            jobTitle: "None"
-        };
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleRadioChange = this.handleRadioChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    state = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        passwordCheck: "",
+        clientType: "petOwner",
+        jobTitle: "None"
+    };
 
-    handleInputChange(event) {
+    handleInputChange = (event) => {
         const { value, name } = event.target;
         this.setState({
             [name]: value
         });
     }
 
-    handleRadioChange(event) {
+    handleRadioChange = (event) => {
         this.setState({
             clientType: event.target.name
         });
@@ -32,16 +27,50 @@ class Signup extends Component {
         this.state.clientType === "petOwner" ? element.classList.remove("hide") : element.classList.add("hide");
     }
 
-    handleJobTitleChange(event) {
-        console.log("event log: ", event.value);
+    handleJobTitleChange = (event) => {
         this.setState({
             jobTitle: event.target.value
-        })
+        });
     }
 
-    handleSubmit(event) {
-        alert(`Sign Up success for: ${this.state.firstName} ${this.state.lastName}`);
+    handleSubmit = (event) => {
         event.preventDefault();
+        const jobTitleChange = this.state.clientType === "petOwner" ? "Owner" : this.state.jobTitle;
+        this.setState({
+            firstName: this.state.firstName.trim(),
+            lastName: this.state.lastName.trim(),
+            email: this.state.email.trim(),
+            password: this.state.password.trim(),
+            jobTitle: jobTitleChange
+        });
+
+        let newUser = {
+            first_name: this.state.firstName,
+            last_name: this.state.lastName,
+            client_type: this.state.clientType,
+            role: this.state.jobTitle,
+            email: this.state.email,
+            password: this.state.password
+        };
+
+        if (this.state.clientType === "serviceProvider" && this.state.jobTitle === "None") {
+            alert("Please select a job title");
+        } else if (this.state.firstName.length === 0 || this.state.lastName.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
+            alert("All fields must be filled out");
+        } else if (this.state.password !== this.state.passwordCheck) {
+            alert("Passwords do not match.");
+        } else {
+            axios.post("/api/users", {
+                newUser
+            })
+                .then(function (response) {
+                    console.log('axios response: ', response);
+                })
+                .catch(function (error) {
+                    console.log('axios error: ', error);
+                });
+            window.location.reload();
+        }
     }
 
     render() {
@@ -96,8 +125,8 @@ class Signup extends Component {
                             </div>
                             <div id="jobs-div" className="row margin hide">
                                 <div className="input-field col s12">
-                                    <select id="job-title" value={this.state.value} onChange={this.handleJobTitleChange}>
-                                        <option value="None" disabled selected>Select Option</option>
+                                    <select id="job-title" value="None" onChange={this.handleJobTitleChange}>
+                                        <option value="None" disabled>Select Option</option>
                                         <option value="Walker">Pet Walker</option>
                                         <option value="Groomer">Pet Groomer</option>
                                         <option value="Sitter">Pet Sitter</option>
@@ -119,7 +148,7 @@ class Signup extends Component {
                             </div>
                             <div className="row margin">
                                 <div className="input-field col s12">
-                                    <input id="password-again" type="password" />
+                                    <input id="password-again" type="password" className="validate" name="passwordCheck" value={this.state.passwordCheck} onChange={this.handleInputChange} />
                                     <label for="password-again">Re-type password</label>
                                 </div>
                             </div>

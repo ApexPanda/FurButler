@@ -1,37 +1,30 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import logo from "../../images/logo/logoFinal.png";
-// import M from 'materialize-css';
 
 class Nav extends Component {
-
-    // componentDidMount() {
-    //     //Auto initialize all materialize components
-    //     M.AutoInit();
-    // }
-
     render() {
         return (
             <>
                 {/* Main Dropdown Structure */}
                 <ul id="dropdown1" className="dropdown-content">
-                    <li><Link to="./profileResults?role=Walker">Walkers</Link></li>
-                    <li><a href="./profileResults?role=Groomer">Groomers</a></li>
-                    <li><a href="./profileResults?role=Sitter">Sitters</a></li>
-                    <li><a href="./profileResults?role=Veterinarian">Veterinarians</a></li>
-                    <li><a href="./profileResults?role=Kennel">Kennels</a></li>
-                    <li><a href="./profileResults?role=Park">Pet Friendly Parks</a></li>
-                    <li><a href="./profileResults?role=Owner">Pet Owners</a></li>
+                    <li><Link to="/profileResults?role=Walker">Walkers</Link></li>
+                    <li><Link to="/profileResults?role=Groomer">Groomers</Link></li>
+                    <li><Link to="/profileResults?role=Sitter">Sitters</Link></li>
+                    <li><Link to="/profileResults?role=Veterinarian">Veterinarians</Link></li>
+                    <li><Link to="/profileResults?role=Kennel">Kennels</Link></li>
+                    <li><Link to="/profileResults?role=Park">Pet Friendly Parks</Link></li>
+                    <li><Link to="/profileResults?role=Owner">Pet Owners</Link></li>
                 </ul>
                 {/* collapsable sidebar */}
                 <ul id="dropdown2" className="dropdown-content">
-                    <li><a href="./profileResults?role=Walker">Walkers</a></li>
-                    <li><a href="./profileResults?role=Groomer">Groomers</a></li>
-                    <li><a href="./profileResults?role=Sitter">Sitters</a></li>
-                    <li><a href="./profileResults?role=Veterinarian">Veterinarians</a></li>
-                    <li><a href="./profileResults?role=Kennel">Kennels</a></li>
-                    <li><a href="./profileResults?role=Park">Pet Friendly Parks</a></li>
-                    <li><a href="./profileResults?role=Owner">Pet Owners</a></li>
+                    <li><Link to="/profileResults?role=Walker">Walkers</Link></li>
+                    <li><Link to="/profileResults?role=Groomer">Groomers</Link></li>
+                    <li><Link to="/profileResults?role=Sitter">Sitters</Link></li>
+                    <li><Link to="/profileResults?role=Veterinarian">Veterinarians</Link></li>
+                    <li><Link to="/profileResults?role=Kennel">Kennels</Link></li>
+                    <li><Link to="/profileResults?role=Park">Pet Friendly Parks</Link></li>
+                    <li><Link to="/profileResults?role=Owner">Pet Owners</Link></li>
                 </ul>
                 {/* Dropdown if logged in */}
                 <ul id="dropdown3" className="dropdown-content">
@@ -46,7 +39,7 @@ class Nav extends Component {
 
                 <nav className="transparent z-depth-0">
                     <div className="nav-wrapper font3">
-                        <a href="/" className="brand-logo"><img src={logo} alt="Logo" height="64" /></a>
+                        <Link to ="/" className="brand-logo"><img src={logo} alt="Logo" height="64" /></Link>
                         {/* collapse trigger */}
                         <a href="#" data-target="mobile-collapse" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
