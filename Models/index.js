@@ -6,10 +6,10 @@ var Sequelize = require("sequelize");
 const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
-const dbSequelize = {};
+const db = {};
 
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env.MYSQL_URL);
+  var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
   var sequelize = new Sequelize(
     config.database,
@@ -27,16 +27,16 @@ fs.readdirSync(__dirname)
   })
   .forEach(function(file) {
     var model = sequelize.import(path.join(__dirname, file));
-    dbSequelize[model.name] = model;
+    db[model.name] = model;
   });
 
-Object.keys(dbSequelize).forEach(function (modelName) {
-  if (dbSequelize[modelName].associate) {
-    dbSequelize[modelName].associate(dbSequelize);
+Object.keys(db).forEach(function (modelName) {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
   }
 });
 
-dbSequelize.sequelize = sequelize;
-dbSequelize.Sequelize = Sequelize;
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-module.exports = dbSequelize;
+module.exports = db;
