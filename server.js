@@ -6,10 +6,6 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of d0e1b5a... setup db for now
 
 // Login Routes
 const loginRouter = require("./routes/userLoginRoutes");
