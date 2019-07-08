@@ -1,5 +1,5 @@
 -- CREATE DATABASE fcflqw2ed3fwf6q1;
-USE 	qprlggxeliat6biw;
+USE 	ol3j0cn1ayza2tod;
 
 DROP TABLE users;
 CREATE TABLE `users` (
@@ -60,4 +60,4 @@ CREATE TABLE posts (
    foreign key (`owner_id`) references users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-USE 	qprlggxeliat6biw;
+USE 	ol3j0cn1ayza2tod;

@@ -6,7 +6,7 @@ import Results from "./pages/Results";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
-import "./App.css";
+// import "./App.css";
 
 class App extends Component {
   render() {
