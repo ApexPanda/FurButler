@@ -29,19 +29,9 @@
     "if-env": "^1.0.4",
     "materialize-css": "^1.0.0",
     "mysql2": "^1.6.5",
-    "node.js": "0.0.0",
-    "now": "^15.7.0",
     "path": "^0.12.7",
     "react": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "sequelize": "^5.9.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ApexPanda/FurButler.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ApexPanda/FurButler/issues"
-  },
-  "homepage": "https://github.com/ApexPanda/FurButler#readme"
+  }
 }

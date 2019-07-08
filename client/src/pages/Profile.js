@@ -49,63 +49,82 @@ class Profile extends Component {
         return (
             <div>
 
-                <h1 className="profile-heading white-text center font1">Profile {this.state.id}</h1>
+                <div className="container grey lighten-4">
 
-                <div className="container">
-                    {this.state.user.length ? (
-                        <div>
-                            {this.state.users.map(user => (
-                                <ProfileDiv
-                                    key={user.id}
-                                    id={user.id}
-                                    first={user.first_name}
-                                    last={user.last_name}
-                                    role={user.role}
-                                    image={user.image}
-                                    location={user.location}
-                                    about={user.about_me}
-                                />
-                            ))}
-                        </div>
-                    ) : (
-                            <h2 className="profile-heading white-text center font2">No Profile matches your criteria</h2>
-                        )}
+                    <div id="profile-header"></div>
 
-                    {this.state.pets.length ? (
-                        <div>
-                            {this.state.pets.map(pet => (
-                                <PetDiv
-                                    key={pet.id}
-                                    id={pet.id}
-                                    first={pet.first_name}
-                                    last={pet.last_name}
-                                    role={pet.role}
-                                    image={pet.image}
-                                    location={pet.location}
-                                />
-                            ))}
-                        </div>
-                    ) : (
-                            <h2 className="profile-heading white-text center font2">No Pets Currently</h2>
-                        )}
+                    <div class="content-padding">
 
-                    {this.state.reviews.length ? (
-                        <div>
-                            {this.state.reviews.map(review => (
-                                <ReviewDiv
-                                    key={review.id}
-                                    id={review.id}
-                                    first={review.first_name}
-                                    last={review.last_name}
-                                    role={review.role}
-                                    image={review.image}
-                                    location={review.location}
-                                />
-                            ))}
-                        </div>
-                    ) : (
-                            <h2 className="profile-heading white-text center font2">No Reviews Currently</h2>
-                        )}
+
+                        {this.state.user.length ? (
+                            <div>
+                                {this.state.user.map(user => (
+                                    <ProfileDiv
+                                        key={user.id}
+                                        id={user.id}
+                                        first={user.first_name}
+                                        last={user.last_name}
+                                        role={user.role}
+                                        image={user.image}
+                                        location={user.location}
+                                        about={user.about_me}
+                                    />
+                                ))}
+                            </div>
+                        ) : (
+                                <div>
+                                    <br></br>
+                                    <p className="center-align font2">No Profile Found</p>
+                                    <br></br>
+                                </div>
+                            )}
+
+                        <h4 class="center-align font1">My Pets</h4>
+                        {this.state.pets.length ? (
+                            <div>
+                                {this.state.pets.map(pet => (
+                                    <PetDiv
+                                        key={pet.id}
+                                        id={pet.id}
+                                        name={pet.pet_name}
+                                        type={pet.pet_type}
+                                        about={pet.about_me}
+                                        image={pet.image}
+                                        location={pet.location}
+                                    />
+                                ))}
+                            </div>
+                        ) : (
+                                <div>
+                                    <br></br>
+                                    <p className="center-align font2">No pets currently</p>
+                                    <br></br>
+                                </div>
+                            )}
+
+                        <h4 class="center-align font1">Reviews</h4>
+                        {this.state.reviews.length ? (
+                            <div>
+                                {this.state.reviews.map(review => (
+                                    <ReviewDiv
+                                        key={review.id}
+                                        id={review.id}
+                                        title={review.title}
+                                        rating={review.rating}
+                                        review={review.review}
+                                        author={review.author_id}
+                                        owner={review.owner_id}
+                                    />
+                                ))}
+                            </div>
+                        ) : (
+                                <div>
+                                    <br></br>
+                                    <p className="center-align font2">No Reviews currently</p>
+                                    <br></br>
+                                </div>
+                            )}
+                    </div>
                 </div>
             </div>
         );

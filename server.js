@@ -5,7 +5,7 @@ const session = require("express-session");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-const dbSequelize = require("./models");
+const db = require("./models");
 
 // Login Routes
 const loginRouter = require("./routes/userLoginRoutes");
@@ -75,7 +75,7 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-dbSequelize.sequelize.sync(syncOptions).then(function () {
+db.sequelize.sync(syncOptions).then(function () {
   app.listen(PORT, function () {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
