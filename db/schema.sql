@@ -1,7 +1,7 @@
--- CREATE DATABASE fcflqw2ed3fwf6q1;
-USE 	g57v06z3jkgspbrm;
+CREATE DATABASE g57v06z3jkgspbrm;
+-- USE 	g57v06z3jkgspbrm;
 
-DROP TABLE users;
+DROP TABLE IF EXISTS users;
 CREATE TABLE `users` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
