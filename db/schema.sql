@@ -1,5 +1,5 @@
 -- CREATE DATABASE fcflqw2ed3fwf6q1;
-USE	g57v06z3jkgspbrm;
+USE 	g57v06z3jkgspbrm;
 
 DROP TABLE users;
 CREATE TABLE `users` (
