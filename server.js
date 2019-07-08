@@ -5,11 +5,8 @@ const session = require("express-session");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-<<<<<<< HEAD
-const dbSequelize = require("./models");
-=======
 const db = require("./models");
->>>>>>> parent of d0e1b5a... setup db for now
+
 
 // Login Routes
 const loginRouter = require("./routes/userLoginRoutes");

@@ -31,6 +31,9 @@
 <<<<<<< HEAD
 =======
     "node.js": "0.0.0",
+<<<<<<< HEAD
+>>>>>>> parent of d0e1b5a... setup db for now
+=======
 >>>>>>> parent of d0e1b5a... setup db for now
     "path": "^0.12.7",
     "react": "^16.8.6",
