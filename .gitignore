@@ -1,7 +1,11 @@
 node_modules
+<<<<<<< HEAD
 .DS_Store
 <<<<<<< HEAD
 now.json
 =======
 .env
 >>>>>>> parent of f1dea34... adding things
+=======
+.DS_Store
+>>>>>>> parent of dab50bc... pushing up connection with .env
