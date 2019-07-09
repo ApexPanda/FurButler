@@ -8,16 +8,16 @@ function PetDiv(props) {
 
     return (
 
-        <div class="row">
-            <div class="col s12">
+        <div className="row">
+            <div className="col s12">
 
-                <div class="card horizontal butlr-blue white-text">
-                    <div class="card-image pet-image"
+                <div className="card horizontal butlr-blue white-text">
+                    <div className="card-image pet-image"
                         style={divStyle}>
                     </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <span class="card-title butlr-green-text font3">{props.name}</span>
+                    <div className="card-stacked">
+                        <div className="card-content">
+                            <span className="card-title butlr-green-text font3">{props.name}</span>
 
                             <p>{props.type}</p>
                             <p>{props.location}</p>

@@ -10,7 +10,9 @@ class Profile extends Component {
         user: [],
         pets: [],
         reviews: [],
-        id: this.props.match.params.id
+        id: this.props.match.params.id,
+
+        loggedIn: true
 
     };
 
@@ -46,6 +48,7 @@ class Profile extends Component {
     }
 
     render() {
+
         return (
             <div>
 
@@ -53,8 +56,7 @@ class Profile extends Component {
 
                     <div id="profile-header"></div>
 
-                    <div class="content-padding">
-
+                    <div className="content-padding">
 
                         {this.state.user.length ? (
                             <div>
@@ -79,7 +81,7 @@ class Profile extends Component {
                                 </div>
                             )}
 
-                        <h4 class="center-align font1">My Pets</h4>
+                        <h4 className="center-align font1">My Pets</h4>
                         {this.state.pets.length ? (
                             <div>
                                 {this.state.pets.map(pet => (
@@ -102,7 +104,7 @@ class Profile extends Component {
                                 </div>
                             )}
 
-                        <h4 class="center-align font1">Reviews</h4>
+                        <h4 className="center-align font1">Reviews</h4>
                         {this.state.reviews.length ? (
                             <div>
                                 {this.state.reviews.map(review => (
@@ -124,8 +126,12 @@ class Profile extends Component {
                                     <br></br>
                                 </div>
                             )}
+                        {this.state.loggedIn ? (<p className="green-text">Logged IN</p>) : (<p className="red-text">Logged OUT</p>)}
                     </div>
                 </div>
+
+
+
             </div>
         );
     }
