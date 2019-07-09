@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import EditBtn from "../EditBtn";
 import API from "../../utils/API";
-import dog from "../../images/site/default-profile-2.jpg";
 import cat from "../../images/site/default-profile-1.jpg";
+import dog from "../../images/site/default-profile-2.jpg";
 import fish from "../../images/site/default-profile-3.jpg";
 
 class ProfileDiv extends Component {
@@ -61,7 +62,11 @@ class ProfileDiv extends Component {
                 <div className="col s12 m8">
                     <div className="card butlr-blue white-text about-section">
                         <div className=" card-content">
-                            <span className="card-title butlr-green-text font3">About Me</span>
+                            <span className="card-title butlr-green-text font3">About Me
+                            {this.props.loggedIn ? (
+                                    <EditBtn />
+                                ) : null}
+                            </span>
                             <p>{this.props.about}</p>
                         </div>
                     </div>

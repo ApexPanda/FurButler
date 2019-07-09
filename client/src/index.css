@@ -112,7 +112,7 @@ p.main-text {
 /* change profile styles */
 
 .long-text-box {
-  height: 200px !important;
+  min-height: 500px !important;
 }
 
 .select-dropdown, .dropdown-trigger {

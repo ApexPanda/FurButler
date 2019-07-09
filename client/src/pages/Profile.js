@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import ProfileDiv from "../components/ProfileDiv";
+import ProfileDivEdit from "../components/ProfileDivEdit";
 import PetDiv from "../components/PetDiv";
 import ReviewDiv from "../components/ReviewDiv";
 
@@ -12,9 +13,26 @@ class Profile extends Component {
         reviews: [],
         id: this.props.match.params.id,
 
-        loggedIn: true
+        loggedIn: true,
+        editing: false
 
     };
+
+    handleLoginTest = () => {
+        this.setState({ loggedIn: true })
+    }
+
+    handleLogoutTest = () => {
+        this.setState({ loggedIn: false })
+    }
+
+    handleEditOnTest = () => {
+        this.setState({ editing: true })
+    }
+
+    handleEditOffTest = () => {
+        this.setState({ editing: false })
+    }
 
     componentDidMount() {
         this.loadProfile();
@@ -50,6 +68,7 @@ class Profile extends Component {
     render() {
 
         return (
+
             <div>
 
                 <div className="container grey lighten-4">
@@ -58,7 +77,7 @@ class Profile extends Component {
 
                     <div className="content-padding">
 
-                        {this.state.user.length ? (
+                        {this.state.user.length && !this.state.editing ? (
                             <div>
                                 {this.state.user.map(user => (
                                     <ProfileDiv
@@ -70,16 +89,32 @@ class Profile extends Component {
                                         image={user.image}
                                         location={user.location}
                                         about={user.about_me}
+                                        loggedIn={this.state.loggedIn}
                                     />
                                 ))}
                             </div>
-                        ) : (
+                        ) : this.state.user.length && this.state.editing ?
                                 <div>
-                                    <br></br>
-                                    <p className="center-align font2">No Profile Found</p>
-                                    <br></br>
-                                </div>
-                            )}
+                                    {this.state.user.map(user => (
+                                        <ProfileDivEdit
+                                            key={user.id}
+                                            id={user.id}
+                                            first={user.first_name}
+                                            last={user.last_name}
+                                            role={user.role}
+                                            image={user.image}
+                                            location={user.location}
+                                            about={user.about_me}
+                                            loggedIn={this.state.loggedIn}
+                                        />
+                                    ))}
+                                </div> : (
+                                    <div>
+                                        <br></br>
+                                        <p className="center-align font2">No Profile Found</p>
+                                        <br></br>
+                                    </div>
+                                )}
 
                         <h4 className="center-align font1">My Pets</h4>
                         {this.state.pets.length ? (
@@ -93,6 +128,7 @@ class Profile extends Component {
                                         about={pet.about_me}
                                         image={pet.image}
                                         location={pet.location}
+                                        loggedIn={this.state.loggedIn}
                                     />
                                 ))}
                             </div>
@@ -126,7 +162,19 @@ class Profile extends Component {
                                     <br></br>
                                 </div>
                             )}
-                        {this.state.loggedIn ? (<p className="green-text">Logged IN</p>) : (<p className="red-text">Logged OUT</p>)}
+                        {/* State test buttons */}
+                        <div className="row">
+                            <span className="col">
+                                {this.state.loggedIn ? (<p className="green-text">Logged IN</p>) : (<p className="red-text">Logged OUT</p>)}
+                                <button onClick={this.handleLoginTest}>In</button>
+                                <button onClick={this.handleLogoutTest}>Out</button>
+                            </span>
+                            <span className="col right">
+                                {this.state.editing ? (<p className="green-text">Edit ON</p>) : (<p className="red-text">Edit OFF</p>)}
+                                <button onClick={this.handleEditOnTest}>On</button>
+                                <button onClick={this.handleEditOffTest}>Off</button>
+                            </span>
+                        </div>
                     </div>
                 </div>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import EditBtn from "../EditBtn";
 
 function PetDiv(props) {
 
@@ -17,7 +18,10 @@ function PetDiv(props) {
                     </div>
                     <div className="card-stacked">
                         <div className="card-content">
-                            <span className="card-title butlr-green-text font3">{props.name}</span>
+                            <span className="card-title butlr-green-text font3">{props.name}
+                                {props.loggedIn ? (
+                                    <EditBtn />
+                                ) : null}</span>
 
                             <p>{props.type}</p>
                             <p>{props.location}</p>
