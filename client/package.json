@@ -6,6 +6,7 @@
   "dependencies": {
     "materialize-css": "^1.0.0",
     "react": "^16.6.3",
+    "react-chat-widget": "^2.1.4-1",
     "react-dom": "^16.6.3",
     "react-scripts": "^2.1.1",
     "sequelize": "^5.9.0"
