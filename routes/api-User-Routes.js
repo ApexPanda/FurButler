@@ -61,16 +61,16 @@ module.exports = function (app) {
 
   // Create a new user
   app.post("/api/users", function (req, res) {
-    const password = req.body.password;
+    let password = req.body.newUser.password;
     bcrypt.hash(password, saltRounds)
       .then(function (hash) {
-        req.body.password = hash;
-        db.User.create(req.body).then(function (dbUser) {
-          console.log("dbUser from .create: ", dbUser);
+        req.body.newUser.password = hash;
+        db.User.create(req.body.newUser).then(function (dbUser) {
+          console.log("dbUser from .create: ", dbUser.dataValues);
           res.json(dbUser);
         });
       });
-    console.log("api/user info: ", req.body);
+    console.log("api/user info: ", req.body.newUser);
   });
 
   // update user

@@ -1,13 +1,12 @@
--- CREATE DATABASE ol3j0cn1ayza2tod;
+CREATE DATABASE ol3j0cn1ayza2tod;
 USE 	ol3j0cn1ayza2tod;
 
-DROP TABLE users;
+DROP TABLE IF EXISTS users;
 CREATE TABLE `users` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
  `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
- `service_provider` boolean,
- `pet_owner` boolean,
+`client_type` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
  `role` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
