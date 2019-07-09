@@ -1,15 +1,20 @@
 { 
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "password",
     "database": "g57v06z3jkgspbrm",
+=======
+    "password": "Password",
+    "database": "ol3j0cn1ayza2tod",
+>>>>>>> 899517022becbd01ce504d333dd5841e8083b745
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "Password",
-    "database": "g57v06z3jkgspbrm",
+    "database": "ol3j0cn1ayza2tod",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
