@@ -34,7 +34,7 @@ render() {
                         <div className="card-content">
                             <span className="card-title butlr-green-text font3">{this.props.name}
                                 {this.props.loggedIn && this.props.loginId === this.props.owner ? (
-                                    <button className="btn-flat right butlr-green-text" onClick={this.handleEditOn}>EDIT<i
+                                    <button className="btn-flat right butlr-yellow-text" onClick={this.handleEditOn}>EDIT<i
                                                     className="material-icons right">edit</i></button>
                                 ) : null}</span>
 

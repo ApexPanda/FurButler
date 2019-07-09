@@ -72,6 +72,10 @@ p.main-text {
   border-radius: 10px !important;
 }
 
+.job-box:hover {
+  transform: scale(1.05);
+}
+
 /* results styles */
 
 .result-profile-image {
@@ -79,6 +83,16 @@ p.main-text {
   height:200px;
   background-position: center;
   background-size: cover;
+}
+
+.result-card {
+  background-color: #224e82 !important;
+}
+
+.result-card:hover {
+  color: #ffff99 !important;
+  background-color: #0b3f72 !important;
+  transform: scale(1.05);
 }
 
 /* profile styles */

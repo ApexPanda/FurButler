@@ -15,7 +15,6 @@ class Profile extends Component {
 
         loginId: 1,
         loggedIn: true,
-        editing: false
 
     };
 

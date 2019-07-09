@@ -41,29 +41,30 @@ class ResultProfile extends Component {
 
         return (
 
-            <div className="col s12 m9">
-                <h2 className="header white-text font3">{this.props.first} {this.props.last}</h2>
-                <div className="card horizontal butlr-blue white-text">
+            <div className="col s6 m6">
+         
+            <a href={this.state.profileLink} className="butlr-yellow-text font2">
+                <div className="card horizontal result-card white-text">
                     <div className="card-image result-profile-image"
                         style={divStyle}
                     >
                     </div>
                     <div className="card-stacked">
                         <div className="card-content  font-200">
+                            <span className="card-title butlr-green-text font3">{this.props.first} {this.props.last}</span>
                             <p>Pet {this.props.role}</p>
                             <p>{this.props.location}</p>
-                            <p>Average Rating: {this.state.rating ? (
+                            <p>Rating: {this.state.rating ? (
                                 <span>{this.state.rating}/10</span>
                             ) : (
                                     <span>N/A</span>
                                 )}
                             </p>
-                        </div>
-                        <div className="card-action">
-                            <a href={this.state.profileLink} className="butlr-yellow-text font2">More Info</a>
-                        </div>
+                        </div>                    
                     </div>
                 </div>
+            </a>
+                <br />
             </div >
         );
     };

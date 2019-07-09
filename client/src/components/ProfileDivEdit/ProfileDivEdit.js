@@ -37,10 +37,12 @@ class ProfileDivEdit extends Component {
         });
     }
 
-      updateProfile = (data) => {
+    updateProfile = (data) => {
         API.updateUser(data)
             .then(res =>
-                this.props.handleEditOff()
+                // this.props.handleEditOff()
+                window.location.reload()
+                
             )
             .catch(err => console.log(err));
     }
