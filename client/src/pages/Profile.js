@@ -11,7 +11,7 @@ class Profile extends Component {
         user: [],
         pets: [],
         reviews: [],
-        id: this.props.match.params.id,
+        id: parseInt(this.props.match.params.id),
 
 
         loginId: 1,
@@ -29,11 +29,11 @@ class Profile extends Component {
         this.setState({ loggedIn: false })
     }
 
-    handleEditOnTest = () => {
+    handleEditOn = () => {
         this.setState({ editing: true })
     }
 
-    handleEditOffTest = () => {
+    handleEditOff = () => {
         this.setState({ editing: false })
     }
 
@@ -103,6 +103,7 @@ class Profile extends Component {
                                         about={user.about_me}
                                         loggedIn={this.state.loggedIn}
                                         loginId={this.state.loginId}
+                                        handleEditOn={this.handleEditOn}
                                     />
                                 ))}
                             </div>
@@ -119,6 +120,7 @@ class Profile extends Component {
                                             location={user.location}
                                             about={user.about_me}
                                             loggedIn={this.state.loggedIn}
+                                            handleEditOff={this.handleEditOff}
 
                                         />
                                     ))}
@@ -137,6 +139,7 @@ class Profile extends Component {
                                     <PetDiv
                                         key={pet.id}
                                         id={pet.id}
+                                        owner={pet.owner_id}
                                         name={pet.pet_name}
                                         type={pet.pet_type}
                                         about={pet.about_me}
@@ -185,14 +188,9 @@ class Profile extends Component {
                                 <button onClick={this.handleLogoutTest}>Out</button>
                             </span>
                             <span className="col">
-                                <p>login ID: <strong className="orange-text">{this.state.loginId}</strong></p>
+                                <p>login ID: <strong className="blue-text">{this.state.loginId}</strong></p>
                                 <button onClick={this.handleIdMinus}>-</button>
                                 <button onClick={this.handleIdPlus}>+</button>
-                            </span>
-                            <span className="col right">
-                                {this.state.editing ? (<p className="green-text">Edit ON</p>) : (<p className="red-text">Edit OFF</p>)}
-                                <button onClick={this.handleEditOnTest}>On</button>
-                                <button onClick={this.handleEditOffTest}>Off</button>
                             </span>
                         </div>
                     </div>

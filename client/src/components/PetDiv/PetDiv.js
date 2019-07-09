@@ -19,7 +19,7 @@ function PetDiv(props) {
                     <div className="card-stacked">
                         <div className="card-content">
                             <span className="card-title butlr-green-text font3">{props.name}
-                                {props.loggedIn ? (
+                                {props.loggedIn && props.loginId === props.owner ? (
                                     <EditBtn />
                                 ) : null}</span>
 
