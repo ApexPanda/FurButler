@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import ProfileDiv from "../components/ProfileDiv";
-import ProfileDivEdit from "../components/ProfileDivEdit";
 import PetDiv from "../components/PetDiv";
 import ReviewDiv from "../components/ReviewDiv";
 
@@ -97,6 +96,7 @@ class Profile extends Component {
                                         id={user.id}
                                         first={user.first_name}
                                         last={user.last_name}
+                                        type={user.client_type}
                                         role={user.role}
                                         image={user.image}
                                         location={user.location}
@@ -107,30 +107,13 @@ class Profile extends Component {
                                     />
                                 ))}
                             </div>
-                        ) : this.state.user.length && this.state.loginId === this.state.id && this.state.editing ?
+                        ) : (
                                 <div>
-                                    {this.state.user.map(user => (
-                                        <ProfileDivEdit
-                                            key={user.id}
-                                            id={user.id}
-                                            first={user.first_name}
-                                            last={user.last_name}
-                                            role={user.role}
-                                            image={user.image}
-                                            location={user.location}
-                                            about={user.about_me}
-                                            loggedIn={this.state.loggedIn}
-                                            handleEditOff={this.handleEditOff}
-
-                                        />
-                                    ))}
-                                </div> : (
-                                    <div>
-                                        <br></br>
-                                        <p className="center-align font2">No Profile Found</p>
-                                        <br></br>
-                                    </div>
-                                )}
+                                    <br></br>
+                                    <p className="center-align font2">No Profile Found</p>
+                                    <br></br>
+                                </div>
+                            )}
 
                         <h4 className="center-align font1">My Pets</h4>
                         {this.state.pets.length ? (

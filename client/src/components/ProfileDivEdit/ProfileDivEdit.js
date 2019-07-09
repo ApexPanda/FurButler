@@ -1,99 +1,201 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import M from 'materialize-css';
 import dog from "../../images/site/default-profile-2.jpg";
 import cat from "../../images/site/default-profile-1.jpg";
 import fish from "../../images/site/default-profile-3.jpg";
 
-function ProfileDivEdit(props) {
+class ProfileDivEdit extends Component {
+    state = {
+        userId: this.props.id,
+        firstName: this.props.first,
+        lastName: this.props.last,
+        image: this.props.image,
+        clientType: this.props.type,
+        jobTitle: this.props.role,
+        location: this.props.location,
+        aboutMe: this.props.about
+    };
 
-    const images = [dog, cat, fish]
-    const placeHolder = images[Math.floor(Math.random() * images.length)]
-    let divStyle;
-
-    if (props.image) {
-        divStyle = {
-            backgroundImage: 'url(' + props.image + ')',
-        };
-    } else {
-        divStyle = {
-            backgroundImage: 'url(' + placeHolder + ')',
-        };
+    handleInputChange = (event) => {
+        const { value, name } = event.target;
+        this.setState({
+            [name]: value
+        });
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('select');
-        var instances = M.htmlFormSelect.init(elems);
-    });
+    handleRadioChange = (event) => {
+        this.setState({
+            clientType: event.target.name
+        });
+        const element = document.getElementById("jobs-div");
+        this.state.clientType === "petOwner" ? element.classList.remove("hide") : element.classList.add("hide");
+    }
 
-    return (
+    handleJobTitleChange = (event) => {
+        this.setState({
+            jobTitle: event.target.value
+        });
+    }
 
-        <div id="profile-div" className="row card white" data-user-id={props.id}>
-            <div className="col s12 m4">
-                <div className="white">
-                    <div className="card-image profile-image"
-                        style={divStyle}>
+      updateProfile = (data) => {
+        API.updateUser(data)
+            .then(res =>
+                this.props.handleEditOff()
+            )
+            .catch(err => console.log(err));
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const jobTitleChange = this.state.clientType === "petOwner" ? "Owner" : this.state.jobTitle;
+        this.setState({
+            firstName: this.state.firstName.trim(),
+            lastName: this.state.lastName.trim(),
+            image: this.state.image ? (this.state.image.trim()) : null,
+            clientType: this.state.clientType.trim(),
+            jobTitle: jobTitleChange,
+            location: this.state.location ? (this.state.location.trim()) : null,
+            aboutMe: this.state.aboutMe ? (this.state.aboutMe.trim()) : null,
+        });
+
+        let userData = {
+            id: this.state.userId,
+            first_name: this.state.firstName,
+            last_name: this.state.lastName,
+            image: this.state.image,
+            client_type: this.state.clientType,
+            role: this.state.jobTitle,
+            location: this.state.location,
+            about_me: this.state.aboutMe
+        };
+
+        this.updateProfile(userData);
+
+    }
+
+    render() {
+
+
+        const images = [dog, cat, fish]
+        const placeHolder = images[Math.floor(Math.random() * images.length)]
+        let divStyle;
+
+        if (this.state.image) {
+            divStyle = {
+                backgroundImage: 'url(' + this.state.image + ')',
+            };
+        } else {
+            divStyle = {
+                backgroundImage: 'url(' + placeHolder + ')',
+            };
+        }
+
+        return (
+
+            <div id="profile-div" className="row card white" data-user-id={this.props.id}>
+                <form className="edit-form" onSubmit={this.handleSubmit}>
+                    <div className="col s12 m4">
+                        <div className="white">
+                            <div className="card-image profile-image"
+                                style={divStyle}>
+                            </div>
+
+                            <div className="card-content">
+
+                                <div className="row">
+                                    <div className="input-field col s12">
+                                        <input id="first-name" type="text" className="validate" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
+                                        <label htmlFor="first-name" className="center-align active">First Name</label>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="input-field col s12">
+                                        <input id="last-name" type="text" className="validate" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
+                                        <label htmlFor="lastName" className="center-align active">Last Name</label>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="input-field col s12">
+                                        <input id="image" type="text" className="validate" name="image" value={this.state.image} onChange={this.handleInputChange} />
+                                        <label htmlFor="image" className="center-align active">Image URL</label>
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <p>
+                                        <label>
+                                            <input
+                                                value="petOwner"
+                                                name="petOwner"
+                                                type="radio"
+                                                id="pet-owner"
+                                                className="profile-type"
+                                                checked={this.state.clientType === "petOwner"}
+                                                onChange={this.handleRadioChange} />
+                                            <span>Pet Owner</span>
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                            <input
+                                                value="serviceProvider"
+                                                name="serviceProvider"
+                                                type="radio"
+                                                id="service-provider"
+                                                className="profile-type"
+                                                checked={this.state.clientType === "serviceProvider"}
+                                                onChange={this.handleRadioChange} />
+                                            <span>Service Provider</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div id="jobs-div" className="row hide">
+                                    <div className="input-field col s12">
+                                        <select id="job-title" value="None" onChange={this.handleJobTitleChange}>
+                                            <option value="None" disabled>Select Option</option>
+                                            <option value="Walker">Pet Walker</option>
+                                            <option value="Groomer">Pet Groomer</option>
+                                            <option value="Sitter">Pet Sitter</option>
+                                        </select>
+                                        <label>Job Title</label>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="input-field col s12">
+                                        <input id="location" type="text" className="validate" name="location" value={this.state.location} onChange={this.handleInputChange} />
+                                        <label htmlFor="location" className="center-align active">location</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="card-content">
-
-                        <textarea id="user-first-name" className="materialize-textarea"
-                            placeholder={props.first}></textarea>
-                        <label htmlFor="user-first-name">First</label>
-
-                        <textarea id="user-last-name" className="materialize-textarea"
-                            placeholder={props.last}></textarea>
-                        <label htmlFor="user-last-name">Last</label>
-
-                        <textarea id="user-image-url" className="materialize-textarea" placeholder={props.image}></textarea>
-                        <label htmlFor="user-image-url">image url</label>
+                    <div className="col s12 m8 margin-about-edit">
+                        <span className="card-title butlr-green-text font3">About Me</span>
+                        <textarea id="aboutMe" type="text" className="validate" name="aboutMe" value={this.state.aboutMe} className="materialize-textarea long-text-box"
+                            onChange={this.handleInputChange} />
+                        <label htmlFor="aboutMe">About Me</label>
 
                         <div className="row">
                             <div className="input-field col s12">
-                                <select id="user-role">
-                                    <option value="" disabled defaultValue>{props.role}</option>
-                                    <option value="Owner">Owner</option>
-                                    <option value="Walker">Walker</option>
-                                    <option value="Groomer">Groomer</option>
-                                    <option value="Sitter">Sitter</option>
-                                </select>
-                                <label htmlFor="user-role">Role</label>
+                                <button data-about-id={this.props.id}
+                                    className="about-save-btn waves-effect waves-light btn butlr-green right"
+                                    type="submit"
+                                    name="action">
+                                    <i className="material-icons">done</i></button>
+                                <button data-about-id={this.props.id}
+                                    className="about-cancel-btn waves-effect waves-light btn grey right margin-right-5"
+                                    onClick={(e) => this.props.handleEditOff(e)}><i
+                                        className="material-icons">clear</i></button>
                             </div>
                         </div>
 
-                        <textarea id="user-location" className="materialize-textarea" placeholder={props.location}></textarea>
-                        <label htmlFor="user-location">location</label>
-
                     </div>
-                </div>
+                </form>
+
             </div>
 
-
-            <div className="col s12 m8">
-                <div className="white">
-                    <div className=" card-content">
-                        <span className="card-title butlr-green-text font3">About Me</span>
-                        <textarea id="user-about-me" className="materialize-textarea  long-text-box"
-                            placeholder={props.about}></textarea>
-                        <label htmlFor="user-about-me">About Me</label>
-
-                        <div className="row">
-                            <a data-about-id={props.id}
-                                className="about-save-btn waves-effect waves-light btn butlr-green right"><i
-                                    className="material-icons">done</i></a>
-                            <a data-about-id={props.id}
-                                className="about-cancel-btn waves-effect waves-light btn grey right margin-right-5"><i
-                                    className="material-icons" onClick={(e) => props.handleEditOff(e)}>clear</i></a>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-    );
-};
+        );
+    };
+}
 
 export default ProfileDivEdit;

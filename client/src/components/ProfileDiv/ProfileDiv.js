@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ProfileDivEdit from "../ProfileDivEdit";
-import EditBtn from "../EditBtn";
 import API from "../../utils/API";
 import cat from "../../images/site/default-profile-1.jpg";
 import dog from "../../images/site/default-profile-2.jpg";
@@ -10,7 +9,7 @@ class ProfileDiv extends Component {
 
     state = {
         rating: null,
-        editing: false
+        editing: true
     };
 
     // test
@@ -61,6 +60,7 @@ class ProfileDiv extends Component {
                         id={this.props.id}
                         first={this.props.first}
                         last={this.props.last}
+                        type={this.props.type}
                         role={this.props.role}
                         image={this.props.image}
                         location={this.props.location}

@@ -1,10 +1,24 @@
-import React from "react";
-import EditBtn from "../EditBtn";
+import React, {Component} from "react";
 
-function PetDiv(props) {
+class PetDiv extends Component {
+       state = {
+        rating: null,
+        editing: true
+    };
 
+    // test
+    handleEditOn = () => {
+        this.setState({ editing: true })
+    }
+
+    handleEditOff = () => {
+        this.setState({ editing: false })
+    }
+    // end
+
+render() {
     const divStyle = {
-        backgroundImage: 'url(' + props.image + ')',
+        backgroundImage: 'url(' + this.props.image + ')',
     };
 
     return (
@@ -18,23 +32,31 @@ function PetDiv(props) {
                     </div>
                     <div className="card-stacked">
                         <div className="card-content">
-                            <span className="card-title butlr-green-text font3">{props.name}
-                                {props.loggedIn && props.loginId === props.owner ? (
-                                    <EditBtn />
+                            <span className="card-title butlr-green-text font3">{this.props.name}
+                                {this.props.loggedIn && this.props.loginId === this.props.owner ? (
+                                    <button className="btn-flat right butlr-green-text" onClick={this.handleEditOn}>EDIT<i
+                                                    className="material-icons right">edit</i></button>
                                 ) : null}</span>
 
-                            <p>{props.type}</p>
-                            <p>{props.location}</p>
+                            <p>{this.props.type}</p>
+                            <p>{this.props.location}</p>
                             <br></br>
-                            <p>{props.about}</p>
+                            <p>{this.props.about}</p>
                         </div>
 
                     </div>
                 </div>
 
             </div>
+            
+             <span className="col right">
+                    {this.state.editing ? (<p className="green-text">Edit ON</p>) : (<p className="red-text">Edit OFF</p>)}
+                    <button onClick={this.handleEditOn}>On</button>
+                    <button onClick={this.handleEditOff}>Off</button>
+                </span>
         </div>
     );
+};
 }
 
 export default PetDiv;

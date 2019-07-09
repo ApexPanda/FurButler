@@ -5,6 +5,10 @@ export default {
     createNewUser: function (userData) {
         return axios.post("/api/users", userData);
     },
+    // update user info by id
+    updateUser: function (userData) {
+        return axios.put("/api/user/update", userData);
+    },
     // Gets all users by role
     getRole: function (role) {
         return axios.get("/api/users/role/" + role);
