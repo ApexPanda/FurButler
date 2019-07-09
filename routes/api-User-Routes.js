@@ -1,6 +1,6 @@
 
 /* eslint-disable camelcase */
-const db = require("../models");
+const db = require("../Models");
 // const connection = require("../config/connection.js");
 
 const bcrypt = require("bcrypt");
