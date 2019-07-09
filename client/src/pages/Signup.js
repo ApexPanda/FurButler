@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import API from "../utils/API";
 
 class Signup extends Component {
     state = {
@@ -60,7 +60,7 @@ class Signup extends Component {
         } else if (this.state.password !== this.state.passwordCheck) {
             alert("Passwords do not match.");
         } else {
-            axios.post("/api/users", {
+            API.createNewUser({
                 newUser
             })
                 .then(function (response) {
@@ -88,11 +88,11 @@ class Signup extends Component {
                             <div className="row margin">
                                 <div className="input-field col s6">
                                     <input id="first-name" type="text" className="validate" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
-                                    <label for="first-name" className="center-align">First Name</label>
+                                    <label htmlFor="first-name" className="center-align">First Name</label>
                                 </div>
                                 <div className="input-field col s6">
                                     <input id="last-name" type="text" className="validate" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
-                                    <label for="last-name" className="center-align">Last Name</label>
+                                    <label htmlFor="last-name" className="center-align">Last Name</label>
                                 </div>
                             </div>
                             <div className="row margin">
@@ -137,19 +137,19 @@ class Signup extends Component {
                             <div className="row margin">
                                 <div className="input-field col s12">
                                     <input id="email" type="email" className="validate" name="email" value={this.state.email} onChange={this.handleInputChange} />
-                                    <label for="email" className="center-align">Email</label>
+                                    <label htmlFor="email" className="center-align">Email</label>
                                 </div>
                             </div>
                             <div className="row margin">
                                 <div className="input-field col s12">
                                     <input id="password" type="password" className="validate" name="password" value={this.state.password} onChange={this.handleInputChange} />
-                                    <label for="password">Password</label>
+                                    <label htmlFor="password">Password</label>
                                 </div>
                             </div>
                             <div className="row margin">
                                 <div className="input-field col s12">
                                     <input id="password-again" type="password" className="validate" name="passwordCheck" value={this.state.passwordCheck} onChange={this.handleInputChange} />
-                                    <label for="password-again">Re-type password</label>
+                                    <label htmlFor="password-again">Re-type password</label>
                                 </div>
                             </div>
                             <div className="row">

@@ -81,13 +81,13 @@ class Nav extends Component {
                                             <div className="row">
                                                 <div className="input-field col s12">
                                                     <input id="login-email" type="email" name="login-email" className="validate" required />
-                                                    <label for="login-email">Email</label>
+                                                    <label htmlFor="login-email">Email</label>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="input-field col s12">
                                                     <input id="pass" type="password" name="pass" className="validate" required />
-                                                    <label for="pass">Password</label>
+                                                    <label htmlFor="pass">Password</label>
                                                 </div>
                                             </div>
                                             <div className="row">
