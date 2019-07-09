@@ -63,7 +63,7 @@ class ProfileDiv extends Component {
                     <div className="card butlr-blue white-text about-section">
                         <div className=" card-content">
                             <span className="card-title butlr-green-text font3">About Me
-                            {this.props.loggedIn ? (
+                            {this.props.loggedIn && this.props.loginId === this.props.id ? (
                                     <EditBtn />
                                 ) : null}
                             </span>

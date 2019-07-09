@@ -13,11 +13,14 @@ class Profile extends Component {
         reviews: [],
         id: this.props.match.params.id,
 
+
+        loginId: 1,
         loggedIn: true,
         editing: false
 
     };
 
+    // testing functions
     handleLoginTest = () => {
         this.setState({ loggedIn: true })
     }
@@ -33,6 +36,15 @@ class Profile extends Component {
     handleEditOffTest = () => {
         this.setState({ editing: false })
     }
+
+    handleIdMinus = () => {
+        this.setState({ loginId: this.state.loginId - 1 })
+    }
+
+    handleIdPlus = () => {
+        this.setState({ loginId: this.state.loginId + 1 })
+    }
+    // end
 
     componentDidMount() {
         this.loadProfile();
@@ -90,10 +102,11 @@ class Profile extends Component {
                                         location={user.location}
                                         about={user.about_me}
                                         loggedIn={this.state.loggedIn}
+                                        loginId={this.state.loginId}
                                     />
                                 ))}
                             </div>
-                        ) : this.state.user.length && this.state.editing ?
+                        ) : this.state.user.length && this.state.loginId === this.state.id && this.state.editing ?
                                 <div>
                                     {this.state.user.map(user => (
                                         <ProfileDivEdit
@@ -106,6 +119,7 @@ class Profile extends Component {
                                             location={user.location}
                                             about={user.about_me}
                                             loggedIn={this.state.loggedIn}
+
                                         />
                                     ))}
                                 </div> : (
@@ -129,6 +143,7 @@ class Profile extends Component {
                                         image={pet.image}
                                         location={pet.location}
                                         loggedIn={this.state.loggedIn}
+                                        loginId={this.state.loginId}
                                     />
                                 ))}
                             </div>
@@ -168,6 +183,11 @@ class Profile extends Component {
                                 {this.state.loggedIn ? (<p className="green-text">Logged IN</p>) : (<p className="red-text">Logged OUT</p>)}
                                 <button onClick={this.handleLoginTest}>In</button>
                                 <button onClick={this.handleLogoutTest}>Out</button>
+                            </span>
+                            <span className="col">
+                                <p>login ID: <strong className="orange-text">{this.state.loginId}</strong></p>
+                                <button onClick={this.handleIdMinus}>-</button>
+                                <button onClick={this.handleIdPlus}>+</button>
                             </span>
                             <span className="col right">
                                 {this.state.editing ? (<p className="green-text">Edit ON</p>) : (<p className="red-text">Edit OFF</p>)}
