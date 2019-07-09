@@ -105,6 +105,10 @@ p.main-text {
   background-size: cover;
 }
 
+.about-section {
+  min-height:355px !important;
+}
+
 /* change profile styles */
 
 .long-text-box {

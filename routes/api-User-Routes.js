@@ -37,6 +37,17 @@ module.exports = function (app) {
     });
   });
 
+  // Get pet owners users
+  app.get("/api/users/role/:role", function (req, res) {
+    db.User.findAll({
+      where: {
+        role: req.params.role
+      }
+    }).then(function (dbUser) {
+      res.json(dbUser);
+    });
+  });
+
   // Get one user
   app.get("/api/users/:id", function (req, res) {
     db.User.findAll({
