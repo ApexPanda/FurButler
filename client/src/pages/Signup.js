@@ -9,7 +9,7 @@ class Signup extends Component {
         password: "",
         passwordCheck: "",
         clientType: "petOwner",
-        jobTitle: "None"
+        jobTitle: "Owner"
     };
 
     handleInputChange = (event) => {

@@ -1,4 +1,4 @@
--- CREATE DATABASE ol3j0cn1ayza2tod;
+CREATE DATABASE ol3j0cn1ayza2tod;
 USE 	ol3j0cn1ayza2tod;
 
 DROP TABLE IF EXISTS users;
