@@ -21,6 +21,19 @@ module.exports = function (app) {
     });
   });
 
+  // Get user average rating based on owner id
+  app.get("/api/reviews/avgRating/:owner_id", function (req, res) {
+    db.Review.findAll({
+      attributes: ['owner_id', [db.Review.sequelize.fn('AVG', db.Review.sequelize.col('rating')), 'avgRating']],
+      group: ['owner_id'],
+      where: {
+        owner_id: req.params.owner_id
+      }
+    }).then(function (dbReview) {
+      res.json(dbReview);
+    });
+  });
+
   // Create a new review
   app.post("/api/reviews", function (req, res) {
     db.Review.create(req.body).then(function (dbReview) {

@@ -21,6 +21,10 @@ export default {
     getReviews: function (owner_id) {
         return axios.get("/api/reviews/" + owner_id);
     },
+    // Gets avg rating by owner_id
+    getRating: function (owner_id) {
+        return axios.get("/api/reviews/avgRating/" + owner_id);
+    },
     //   // Deletes the book with the given id
     //   deleteBook: function (id) {
     //     return axios.delete("/api/books/" + id);
