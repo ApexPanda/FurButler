@@ -8,23 +8,23 @@ class Nav extends Component {
             <>
                 {/* Main Dropdown Structure */}
                 <ul id="dropdown1" className="dropdown-content">
-                    <li><Link to="/profileResults?role=Walker">Walkers</Link></li>
-                    <li><Link to="/profileResults?role=Groomer">Groomers</Link></li>
-                    <li><Link to="/profileResults?role=Sitter">Sitters</Link></li>
-                    <li><Link to="/profileResults?role=Veterinarian">Veterinarians</Link></li>
-                    <li><Link to="/profileResults?role=Kennel">Kennels</Link></li>
-                    <li><Link to="/profileResults?role=Park">Pet Friendly Parks</Link></li>
-                    <li><Link to="/profileResults?role=Owner">Pet Owners</Link></li>
+                    <li><a href="/results/Walker">Walkers</a></li>
+                    <li><a href="/results/Groomer">Groomers</a></li>
+                    <li><a href="/results/Sitter">Sitters</a></li>
+                    <li><a href="/results/Veterinarian">Veterinarians</a></li>
+                    <li><a href="/results/Kennel">Kennels</a></li>
+                    <li><a href="/results/Park">Pet Friendly Parks</a></li>
+                    <li><a href="/results/Owner">Pet Owners</a></li>
                 </ul>
                 {/* collapsable sidebar */}
                 <ul id="dropdown2" className="dropdown-content">
-                    <li><Link to="/profileResults?role=Walker">Walkers</Link></li>
-                    <li><Link to="/profileResults?role=Groomer">Groomers</Link></li>
-                    <li><Link to="/profileResults?role=Sitter">Sitters</Link></li>
-                    <li><Link to="/profileResults?role=Veterinarian">Veterinarians</Link></li>
-                    <li><Link to="/profileResults?role=Kennel">Kennels</Link></li>
-                    <li><Link to="/profileResults?role=Park">Pet Friendly Parks</Link></li>
-                    <li><Link to="/profileResults?role=Owner">Pet Owners</Link></li>
+                    <li><a href="/results/Walker">Walkers</a></li>
+                    <li><a href="/results/Groomer">Groomers</a></li>
+                    <li><a href="/results/Sitter">Sitters</a></li>
+                    <li><a href="/results/Veterinarian">Veterinarians</a></li>
+                    <li><a href="/results/Kennel">Kennels</a></li>
+                    <li><a href="/results/Park">Pet Friendly Parks</a></li>
+                    <li><a href="/results/Owner">Pet Owners</a></li>
                 </ul>
                 {/* Dropdown if logged in */}
                 <ul id="dropdown3" className="dropdown-content">
