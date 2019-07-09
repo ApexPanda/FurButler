@@ -1,4 +1,4 @@
--- CREATE DATABASE fcflqw2ed3fwf6q1;
+-- CREATE DATABASE ol3j0cn1ayza2tod;
 USE 	ol3j0cn1ayza2tod;
 
 DROP TABLE users;
