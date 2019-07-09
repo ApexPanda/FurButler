@@ -14,23 +14,23 @@ class Nav extends Component {
             <>
                 {/* Dropdown Structure */}
                 <ul id="dropdown1" className="dropdown-content">
-                    <li><a href="./profileResults?role=Walker">Walkers</a></li>
-                    <li><a href="./profileResults?role=Groomer">Groomers</a></li>
-                    <li><a href="./profileResults?role=Sitter">Sitters</a></li>
-                    <li><a href="./profileResults?role=Veterinarian">Veterinarians</a></li>
-                    <li><a href="./profileResults?role=Kennel">Kennels</a></li>
-                    <li><a href="./profileResults?role=Park">Pet Friendly Parks</a></li>
-                    <li><a href="./profileResults?role=Owner">Pet Owners</a></li>
+                    <li><a href="/results/Walker">Walkers</a></li>
+                    <li><a href="/results/Groomer">Groomers</a></li>
+                    <li><a href="/results/Sitter">Sitters</a></li>
+                    <li><a href="/results/Veterinarian">Veterinarians</a></li>
+                    <li><a href="/results/Kennel">Kennels</a></li>
+                    <li><a href="/results/Park">Pet Friendly Parks</a></li>
+                    <li><a href="/results/Owner">Pet Owners</a></li>
                 </ul>
 
                 <ul id="dropdown2" className="dropdown-content">
-                    <li><a href="./profileResults?role=Walker">Walkers</a></li>
-                    <li><a href="./profileResults?role=Groomer">Groomers</a></li>
-                    <li><a href="./profileResults?role=Sitter">Sitters</a></li>
-                    <li><a href="./profileResults?role=Veterinarian">Veterinarians</a></li>
-                    <li><a href="./profileResults?role=Kennel">Kennels</a></li>
-                    <li><a href="./profileResults?role=Park">Pet Friendly Parks</a></li>
-                    <li><a href="./profileResults?role=Owner">Pet Owners</a></li>
+                    <li><a href="/results/Walker">Walkers</a></li>
+                    <li><a href="/results/Groomer">Groomers</a></li>
+                    <li><a href="/results/Sitter">Sitters</a></li>
+                    <li><a href="/results/Veterinarian">Veterinarians</a></li>
+                    <li><a href="/results/Kennel">Kennels</a></li>
+                    <li><a href="/results/Park">Pet Friendly Parks</a></li>
+                    <li><a href="/results/Owner">Pet Owners</a></li>
                 </ul>
 
 
@@ -89,13 +89,13 @@ class Nav extends Component {
                                             <div className="row">
                                                 <div className="input-field col s12">
                                                     <input id="login-email" type="email" name="login-email" className="validate" required />
-                                                    <label for="login-email">Email</label>
+                                                    <label htmlFor="login-email">Email</label>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="input-field col s12">
                                                     <input id="pass" type="password" name="pass" className="validate" required />
-                                                    <label for="pass">Password</label>
+                                                    <label htmlFor="pass">Password</label>
                                                 </div>
                                             </div>
                                             <div className="row">
