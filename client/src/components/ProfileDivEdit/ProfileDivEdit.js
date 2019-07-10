@@ -83,12 +83,18 @@ class ProfileDivEdit extends Component {
             last_name: this.state.lastName,
             image: this.state.image,
             client_type: this.state.clientType,
-            role: this.state.jobTitle,
+            role: jobTitleChange,
             location: this.state.location,
             about_me: this.state.aboutMe
         };
 
-        this.updateProfile(userData);
+        if (this.state.clientType === "serviceProvider" && this.state.jobTitle === "Owner") {
+            alert("Please select a job title.");
+        } else if (this.state.firstName.length === 0 || this.state.lastName.length === 0) {
+            alert("Names must be filled out.");
+        } else {
+            this.updateProfile(userData);
+        }
 
     }
 
