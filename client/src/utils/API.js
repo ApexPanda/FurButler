@@ -17,6 +17,10 @@ export default {
     getProfile: function (id) {
         return axios.get("/api/users/" + id);
     },
+    // Creates new Pet
+    createNewPet: function (petData) {
+        return axios.post("/api/pets", petData);
+    },
     // Gets pets by owner_id
     getPets: function (owner_id) {
         return axios.get("/api/pets/" + owner_id);

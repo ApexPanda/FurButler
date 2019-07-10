@@ -3,6 +3,7 @@ import API from "../utils/API";
 import ProfileDiv from "../components/ProfileDiv";
 import PetDiv from "../components/PetDiv";
 import ReviewDiv from "../components/ReviewDiv";
+import NewPetForm from "../components/NewPetForm";
 
 class Profile extends Component {
 
@@ -16,6 +17,8 @@ class Profile extends Component {
         loginId: 1,
         loggedIn: true,
 
+        addingPet: false
+
     };
 
     // testing functions
@@ -27,14 +30,21 @@ class Profile extends Component {
         this.setState({ loggedIn: false })
     }
 
-    handleEditOn = () => {
-        this.setState({ editing: true })
+    handlePetOn = () => {
+        this.setState({ addingPet: true })
     }
 
-    handleEditOff = () => {
-        this.setState({ editing: false })
+    handlePetOff = () => {
+        this.setState({ addingPet: false })
     }
 
+    handleIdMinus = () => {
+        this.setState({ loginId: this.state.loginId - 1 })
+    }
+
+    handleIdPlus = () => {
+        this.setState({ loginId: this.state.loginId + 1 })
+    }
     handleIdMinus = () => {
         this.setState({ loginId: this.state.loginId - 1 })
     }
@@ -102,7 +112,6 @@ class Profile extends Component {
                                         about={user.about_me}
                                         loggedIn={this.state.loggedIn}
                                         loginId={this.state.loginId}
-                                        handleEditOn={this.handleEditOn}
                                     />
                                 ))}
                             </div>
@@ -140,6 +149,22 @@ class Profile extends Component {
                                 </div>
                             )}
 
+                        {!this.state.addingPet && this.state.loggedIn && this.state.loginId === this.state.id ?
+                            (<div id="add-pet-btn-div" class="row right-align">
+                                <span class="margin-right-5 butlr-pink-text font3">Add Pet</span>
+                                <a id="add-pet-btn" class="btn-floating waves-effect waves-light butlr-pink"
+                                    onClick={this.handlePetOn}><i
+                                        class="material-icons">add</i>
+                                </a>
+                            </div>) : this.state.addingPet && this.state.loggedIn && this.state.loginId === this.state.id ? (
+                                <NewPetForm
+                                    ownerId={this.state.id}
+                                    handlePetOff={this.handlePetOff} />
+                            ) : (
+                                    null
+                                )
+                        }
+
                         <h4 className="center-align font1">Reviews</h4>
                         {this.state.reviews.length ? (
                             <div>
@@ -173,6 +198,11 @@ class Profile extends Component {
                                 <p>login ID: <strong className="blue-text">{this.state.loginId}</strong></p>
                                 <button onClick={this.handleIdMinus}>-</button>
                                 <button onClick={this.handleIdPlus}>+</button>
+                            </span>
+                            <span className="col right">
+                                {this.state.addingPet ? (<p className="green-text">Pet ON</p>) : (<p className="red-text">Pet OFF</p>)}
+                                <button onClick={this.handlePetOn}>On</button>
+                                <button onClick={this.handlePetOff}>Off</button>
                             </span>
                         </div>
                     </div>

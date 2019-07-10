@@ -123,6 +123,13 @@ p.main-text {
   min-height:355px !important;
 }
 
+#add-pet-btn-div {
+  margin-right: 20px;
+}
+#add-pet-btn:hover {
+  transform: scale(1.1);
+  }
+
 /* change profile styles */
 
 .long-text-box {

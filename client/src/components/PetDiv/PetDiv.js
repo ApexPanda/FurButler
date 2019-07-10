@@ -64,11 +64,11 @@ class PetDiv extends Component {
 
                         </div>
                     )}
-                <span className="col right">
+                {/* <span className="col right">
                     {this.state.editing ? (<p className="green-text">Edit ON</p>) : (<p className="red-text">Edit OFF</p>)}
                     <button onClick={this.handleEditOn}>On</button>
                     <button onClick={this.handleEditOff}>Off</button>
-                </span>
+                </span> */}
             </div>
 
         );
