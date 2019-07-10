@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import M from 'materialize-css';
 import API from "../../utils/API";
 import dog from "../../images/site/default-profile-2.jpg";
 import cat from "../../images/site/default-profile-1.jpg";
@@ -12,9 +13,25 @@ class ProfileDivEdit extends Component {
         image: this.props.image,
         clientType: this.props.type,
         jobTitle: this.props.role,
+        aboutMe: this.props.about,
         location: this.props.location,
-        aboutMe: this.props.about
+
+        images: [dog, cat, fish],
+        placeHolder: ""
+
     };
+
+
+    componentDidMount() {
+        M.AutoInit();
+        if (this.state.clientType === "serviceProvider") {
+            const element = document.getElementById("jobs-div");
+            element.classList.remove("hide");
+        }
+        this.setState({
+            placeHolder: this.state.images[Math.floor(Math.random() * this.state.images.length)]
+        })
+    }
 
     handleInputChange = (event) => {
         const { value, name } = event.target;
@@ -42,7 +59,7 @@ class ProfileDivEdit extends Component {
             .then(res =>
                 // this.props.handleEditOff()
                 window.location.reload()
-                
+
             )
             .catch(err => console.log(err));
     }
@@ -77,9 +94,6 @@ class ProfileDivEdit extends Component {
 
     render() {
 
-
-        const images = [dog, cat, fish]
-        const placeHolder = images[Math.floor(Math.random() * images.length)]
         let divStyle;
 
         if (this.state.image) {
@@ -88,7 +102,7 @@ class ProfileDivEdit extends Component {
             };
         } else {
             divStyle = {
-                backgroundImage: 'url(' + placeHolder + ')',
+                backgroundImage: 'url(' + this.state.placeHolder + ')',
             };
         }
 
