@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import PetDivEdit from "../PetDivEdit"
+import cat from "../../images/site/default-profile-1.jpg";
+import dog from "../../images/site/default-profile-2.jpg";
+import fish from "../../images/site/default-profile-3.jpg";
 class PetDiv extends Component {
     state = {
         rating: null,
@@ -17,9 +20,20 @@ class PetDiv extends Component {
     // end
 
     render() {
-        const divStyle = {
-            backgroundImage: 'url(' + this.props.image + ')',
-        };
+
+        const images = [dog, cat, fish]
+        const placeHolder = images[Math.floor(Math.random() * images.length)]
+        let divStyle;
+
+        if (this.props.image) {
+            divStyle = {
+                backgroundImage: 'url(' + this.props.image + ')',
+            };
+        } else {
+            divStyle = {
+                backgroundImage: 'url(' + placeHolder + ')',
+            };
+        }
 
         return (
             <div className="row">

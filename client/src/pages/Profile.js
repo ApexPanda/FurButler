@@ -150,11 +150,11 @@ class Profile extends Component {
                             )}
 
                         {!this.state.addingPet && this.state.loggedIn && this.state.loginId === this.state.id ?
-                            (<div id="add-pet-btn-div" class="row right-align">
-                                <span class="margin-right-5 butlr-pink-text font3">Add Pet</span>
-                                <a id="add-pet-btn" class="btn-floating waves-effect waves-light butlr-pink"
+                            (<div id="add-pet-btn-div" className="row right-align">
+                                <span className="margin-right-5 butlr-pink-text font3">Add Pet</span>
+                                <a id="add-pet-btn" className="btn-floating waves-effect waves-light butlr-pink"
                                     onClick={this.handlePetOn}><i
-                                        class="material-icons">add</i>
+                                        className="material-icons">add</i>
                                 </a>
                             </div>) : this.state.addingPet && this.state.loggedIn && this.state.loginId === this.state.id ? (
                                 <NewPetForm
