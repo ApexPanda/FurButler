@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { toggleChat, addUserMessage } from '@actions';
+import { toggleChat, addUserMessage } from 'client/src/store/actions/index.js';
 
 import WidgetLayout from './layout';
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 
-import { hideAvatar } from '@actions';
+import { hideAvatar } from 'client/src/store/actions/index.js';
 import { scrollToBottom } from '@utils/messages';
 
 import Loader from './components/Loader';
