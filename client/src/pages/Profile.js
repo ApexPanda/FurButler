@@ -3,6 +3,7 @@ import API from "../utils/API";
 import ProfileDiv from "../components/ProfileDiv";
 import PetDiv from "../components/PetDiv";
 import ReviewDiv from "../components/ReviewDiv";
+import NewPetForm from "../components/NewPetForm";
 
 class Profile extends Component {
 
@@ -10,9 +11,48 @@ class Profile extends Component {
         user: [],
         pets: [],
         reviews: [],
-        id: this.props.match.params.id
+        id: parseInt(this.props.match.params.id),
+
+
+        loginId: 1,
+        loggedIn: true,
+
+        addingPet: false
 
     };
+
+    // testing functions
+    handleLoginTest = () => {
+        this.setState({ loggedIn: true })
+    }
+
+    handleLogoutTest = () => {
+        this.setState({ loggedIn: false })
+    }
+
+    handlePetOn = () => {
+        this.setState({ addingPet: true })
+    }
+
+    handlePetOff = () => {
+        this.setState({ addingPet: false })
+    }
+
+    handleIdMinus = () => {
+        this.setState({ loginId: this.state.loginId - 1 })
+    }
+
+    handleIdPlus = () => {
+        this.setState({ loginId: this.state.loginId + 1 })
+    }
+    handleIdMinus = () => {
+        this.setState({ loginId: this.state.loginId - 1 })
+    }
+
+    handleIdPlus = () => {
+        this.setState({ loginId: this.state.loginId + 1 })
+    }
+    // end
 
     componentDidMount() {
         this.loadProfile();
@@ -46,17 +86,18 @@ class Profile extends Component {
     }
 
     render() {
+
         return (
+
             <div>
 
                 <div className="container grey lighten-4">
 
                     <div id="profile-header"></div>
 
-                    <div class="content-padding">
+                    <div className="content-padding">
 
-
-                        {this.state.user.length ? (
+                        {this.state.user.length && !this.state.editing ? (
                             <div>
                                 {this.state.user.map(user => (
                                     <ProfileDiv
@@ -64,10 +105,13 @@ class Profile extends Component {
                                         id={user.id}
                                         first={user.first_name}
                                         last={user.last_name}
+                                        type={user.client_type}
                                         role={user.role}
                                         image={user.image}
                                         location={user.location}
                                         about={user.about_me}
+                                        loggedIn={this.state.loggedIn}
+                                        loginId={this.state.loginId}
                                     />
                                 ))}
                             </div>
@@ -79,18 +123,21 @@ class Profile extends Component {
                                 </div>
                             )}
 
-                        <h4 class="center-align font1">My Pets</h4>
+                        <h4 className="center-align font1">My Pets</h4>
                         {this.state.pets.length ? (
                             <div>
                                 {this.state.pets.map(pet => (
                                     <PetDiv
                                         key={pet.id}
                                         id={pet.id}
+                                        owner={pet.owner_id}
                                         name={pet.pet_name}
                                         type={pet.pet_type}
                                         about={pet.about_me}
                                         image={pet.image}
                                         location={pet.location}
+                                        loggedIn={this.state.loggedIn}
+                                        loginId={this.state.loginId}
                                     />
                                 ))}
                             </div>
@@ -102,7 +149,23 @@ class Profile extends Component {
                                 </div>
                             )}
 
-                        <h4 class="center-align font1">Reviews</h4>
+                        {!this.state.addingPet && this.state.loggedIn && this.state.loginId === this.state.id ?
+                            (<div id="add-pet-btn-div" className="row right-align">
+                                <span className="margin-right-5 butlr-pink-text font3">Add Pet</span>
+                                <a id="add-pet-btn" className="btn-floating waves-effect waves-light butlr-pink"
+                                    onClick={this.handlePetOn}><i
+                                        className="material-icons">add</i>
+                                </a>
+                            </div>) : this.state.addingPet && this.state.loggedIn && this.state.loginId === this.state.id ? (
+                                <NewPetForm
+                                    ownerId={this.state.id}
+                                    handlePetOff={this.handlePetOff} />
+                            ) : (
+                                    null
+                                )
+                        }
+
+                        <h4 className="center-align font1">Reviews</h4>
                         {this.state.reviews.length ? (
                             <div>
                                 {this.state.reviews.map(review => (
@@ -124,8 +187,29 @@ class Profile extends Component {
                                     <br></br>
                                 </div>
                             )}
+                        {/* State test buttons */}
+                        <div className="row">
+                            <span className="col">
+                                {this.state.loggedIn ? (<p className="green-text">Logged IN</p>) : (<p className="red-text">Logged OUT</p>)}
+                                <button onClick={this.handleLoginTest}>In</button>
+                                <button onClick={this.handleLogoutTest}>Out</button>
+                            </span>
+                            <span className="col">
+                                <p>login ID: <strong className="blue-text">{this.state.loginId}</strong></p>
+                                <button onClick={this.handleIdMinus}>-</button>
+                                <button onClick={this.handleIdPlus}>+</button>
+                            </span>
+                            <span className="col right">
+                                {this.state.addingPet ? (<p className="green-text">Pet ON</p>) : (<p className="red-text">Pet OFF</p>)}
+                                <button onClick={this.handlePetOn}>On</button>
+                                <button onClick={this.handlePetOff}>Off</button>
+                            </span>
+                        </div>
                     </div>
                 </div>
+
+
+
             </div>
         );
     }

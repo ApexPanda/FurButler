@@ -1,35 +1,73 @@
-import React from "react";
+import React, { Component } from "react";
+import API from "../../utils/API";
+import dog from "../../images/site/default-profile-2.jpg";
+import cat from "../../images/site/default-profile-1.jpg";
+import fish from "../../images/site/default-profile-3.jpg";
 
-function ResultProfile(props) {
+class ResultProfile extends Component {
 
-    const divStyle = {
-        backgroundImage: 'url(' + props.image + ')',
+    state = {
+        profileLink: "/profile/" + this.props.id,
+        rating: null,
     };
 
-    const profileLink = "/profile/" + props.id
+    componentDidMount() {
+        this.loadRating();
+    }
 
-    return (
+    loadRating = () => {
+        API.getRating(this.props.id)
+            .then(res =>
+                this.setState({ rating: Math.trunc(res.data[0].avgRating) })
+            )
+            .catch(err => console.log(err));
+    }
 
-        <div className="col s12 m9">
-            <h2 className="header white-text font3">{props.first} {props.last}</h2>
-            <div className="card horizontal butlr-blue white-text">
-                <div className="card-image result-profile-image"
-                    style={divStyle}
-                >
-                </div>
-                <div className="card-stacked">
-                    <div className="card-content  font-200">
-                        <p>Pet {props.role}</p>
-                        <p>{props.location}</p>
-                        <p>Average Rating: ****</p>
+    render() {
+
+        const images = [dog, cat, fish]
+        const placeHolder = images[Math.floor(Math.random() * images.length)]
+        let divStyle;
+
+        if (this.props.image) {
+            divStyle = {
+                backgroundImage: 'url(' + this.props.image + ')',
+            };
+        } else {
+            divStyle = {
+                backgroundImage: 'url(' + placeHolder + ')',
+            };
+        }
+
+        return (
+
+            <div className="col s6 m6">
+         
+            <a href={this.state.profileLink} className="butlr-yellow-text font2">
+                <div className="card horizontal result-card white-text">
+                    <div className="card-image result-profile-image"
+                        style={divStyle}
+                    >
                     </div>
-                    <div className="card-action">
-                        <a href={profileLink} className="butlr-yellow-text font2">More Info</a>
+                    <div className="card-stacked">
+                        <div className="card-content  font-200">
+                            <span className="card-title butlr-green-text font3">{this.props.first} {this.props.last}</span>
+                            <p>Pet {this.props.role}</p>
+                            <p>{this.props.location}</p>
+                            <p>Rating: {this.state.rating ? (
+                                <span>{this.state.rating}/10</span>
+                            ) : (
+                                    <span>N/A</span>
+                                )}
+                            </p>
+                        </div>                    
                     </div>
                 </div>
-            </div>
-        </div >
-    );
+            </a>
+                <br />
+            </div >
+        );
+    };
 }
 
 export default ResultProfile;
