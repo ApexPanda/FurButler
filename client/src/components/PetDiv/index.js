@@ -1,2 +1,2 @@
-import ResultProfile from "./PetDiv";
-export default ResultProfile
+import PetDiv from "./PetDiv";
+export default PetDiv
