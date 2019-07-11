@@ -19,7 +19,7 @@ class Profile extends Component {
         loggedIn: true,
 
         addingPet: false,
-        addingReview: true
+        addingReview: false
 
     };
 

@@ -13,6 +13,10 @@ export default {
     getRole: function (role) {
         return axios.get("/api/users/role/" + role);
     },
+    // Gets user image by id
+    getImage: function (id) {
+        return axios.get("/api/users/image/" + id);
+    },
     // Gets user by id
     getProfile: function (id) {
         return axios.get("/api/users/" + id);
