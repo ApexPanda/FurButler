@@ -1,6 +1,6 @@
 import { List } from 'immutable';
-import { createReducer } from '@utils/store';
-import { createQuickButton } from '../../utils/messages';
+import { createReducer } from 'client/src/store/store.js';
+import { createQuickButton } from 'client/src/utils/messages.js';
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = List([]);
