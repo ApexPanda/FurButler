@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import openLauncher from '@assets/launcher_button.svg';
-import close from '@assets/clear-button.svg';
+import openLauncher from 'client/src/assets/launcher_button.svg';
+import close from 'client/src/assets/clear-button.svg';
 import Badge from './components/Badge';
 import './style.scss';
 
