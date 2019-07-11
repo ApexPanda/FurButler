@@ -41,4 +41,15 @@ module.exports = function (app) {
         res.json(dbPet);
       });
   });
+
+  // deletes pet based on owner id
+  app.delete("/api/pets/:id", function (req, res) {
+    db.Pet.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbPet) {
+      res.json(dbPet);
+    });
+  });
 };

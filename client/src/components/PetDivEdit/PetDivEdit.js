@@ -42,6 +42,20 @@ class PetDivEdit extends Component {
             .catch(err => console.log(err));
     }
 
+    deletePetProfile = (id) => {
+        API.deletePet(id)
+            .then(res =>
+                // this.props.handleEditOff()
+                window.location.reload()
+
+            )
+            .catch(err => console.log(err));
+    }
+
+    handleDelete = () => {
+        this.deletePetProfile(this.state.petId)
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         this.setState({
@@ -134,7 +148,10 @@ class PetDivEdit extends Component {
                         </div>
                     </div>
                     <div className="col s12 m8 margin-about-edit">
-                        <span className="card-title butlr-green-text font3">About Me</span>
+                        <span className="card-title butlr-green-text font3">About Me
+                          <button className="btn-flat right butlr-pink-text" onClick={this.handleDelete}>DELETE<i
+                                className="material-icons right">delete</i></button>
+                        </span>
                         <textarea id="aboutMe" type="text" className="validate" name="aboutMe" value={this.state.aboutMe} className="materialize-textarea long-text-box"
                             onChange={this.handleInputChange} />
                         <label htmlFor="aboutMe">About Me</label>

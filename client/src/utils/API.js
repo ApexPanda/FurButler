@@ -29,6 +29,10 @@ export default {
     updatePet: function (petData) {
         return axios.put("/api/pet/update", petData);
     },
+    // Deletes the pet with the given id
+    deletePet: function (id) {
+        return axios.delete("/api/pets/" + id);
+    },
     // Gets reviews by owner_id
     getReviews: function (owner_id) {
         return axios.get("/api/reviews/" + owner_id);
