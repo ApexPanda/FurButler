@@ -1,9 +1,17 @@
 import axios from "axios";
 
 export default {
-    // Saves user info to the database
-    createNewUser: function (userData) {
-        return axios.post("/api/users", userData);
+    // Saves/Posts new user info to the database
+    createNewUser: function (userSignUpData) {
+        return axios.post("/api/users", userSignUpData);
+    },
+    // Posts user login
+    postLogin: function (userLoginData) {
+        return axios.post("/api/login", userLoginData);
+    },
+    // Gets user data from db to compare to login
+    getSession: function () {
+        return axios.get("/api/session");
     },
     // Gets all users by role
     getRole: function (role) {

@@ -1,13 +1,102 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import logo from "../../images/logo/logoFinal.png";
+import API from "../../utils/API";
 
 class Nav extends Component {
+    state = {
+        isLoggedIn: false,
+        sessionImage: "",
+        sessionName: "",
+        sessionId: 0
+    }
+
+    handleLogin = (data) => {
+        this.setState({
+            isLoggedIn: true,
+            sessionid: data.id,
+            sessionImage: data.image,
+            sessionName: data.firstName
+        });
+    }
+
+    componentDidMount() {
+        // Login event listener and axios post ===================
+        document.getElementById("login-submit").addEventListener("click", event => {
+            event.preventDefault();
+            const email = document.getElementById("login-email").value.trim();
+            const password = document.getElementById("pass").value.trim();
+            if (!email || !password) {
+                alert("Please fill out all fields");
+            } else {
+                API.postLogin({
+                    email: email,
+                    password: password
+                })
+                    .then(function (response) {
+                        console.log('axios login post response: ', response);
+                    })
+                    .catch(function (error) {
+                        console.log('axios error: ', error);
+                    });
+            }
+            window.location.reload();
+        });
+        // Get session data and compare and change login button
+        API.getSession().then(function (data) {
+            console.log("API getSession data: ", data);
+
+
+            if ("currentUser" in data.data) {
+                console.log('data from if statement: ', data.data.currentUser);
+                console.log('this: ', this); //undefined
+                this.handleLogin(data.data.currentUser); //========================= property handleLogin is undefined
+
+                // Store id to session so we can pull it out 
+                sessionStorage.setItem("userId", this.state.sessionid);
+                console.log("session id: " + this.state.sessionid);
+                console.log("session img: " + this.state.sessionImage);
+                console.log("session name: " + this.state.sessionName);
+
+                document.getElementById("profile-nav-image").style.backgroundImage = `url("${this.state.sessionImage}")`;
+                document.getElementById("session-name").innerHTML = this.state.sessionName;
+                document.getElementById("user-profile-link").setAttribute("href", "./userProfile?id=" + this.state.sessionid);
+                document.getElementById("user-edit-link").setAttribute("href", "./testChange?id=" + this.state.sessionid);
+                // These will throw error due to HTML collection of getElementsByClassName
+                document.getElementsByClassName("login-show").classList.remove("hide");
+                document.getElementsByClassName("logout-show").classList.add("hide");
+
+                //Old way
+                // const sessionid = data.data.currentUser.id;
+                // const sessionImage = data.data.currentUser.image;
+                // const sessionName = data.data.currentUser.firstName;
+                // console.log("session id: " + sessionid);
+                // Store id to session so we can pull it out 
+                // sessionStorage.setItem("userId", sessionid); //Use the state for sessionId
+                // console.log("session img: " + sessionImage);
+                // console.log("session name: " + sessionName);
+                // document.getElementById("profile-nav-image").style.backgroundImage = `url("${sessionImage}")`;
+                // document.getElementById("session-name").innerHTML = sessionName;
+                // document.getElementById("user-profile-link").setAttribute("href", "./userProfile?id=" + sessionid);
+                // document.getElementById("user-edit-link").setAttribute("href", "./testChange?id=" + sessionid);
+
+                // turn in to an array first?? Not working because of HTML collection is 'array like'
+                // document.getElementsByClassName("login-show").classList.remove("hide");
+                // document.getElementsByClassName("logout-show").classList.add("hide");
+            } else {
+                console.log("User not logged in");
+                // this.setState({
+                //     isLoggedIn: false
+                // })
+            }
+        });
+    }
+
     render() {
         return (
             <>
                 {/* Main Dropdown Structure */}
-                <ul id="dropdown1" className="dropdown-content">
+                < ul id="dropdown1" className="dropdown-content" >
                     <li><a href="/results/Walker">Walkers</a></li>
                     <li><a href="/results/Groomer">Groomers</a></li>
                     <li><a href="/results/Sitter">Sitters</a></li>
@@ -15,9 +104,9 @@ class Nav extends Component {
                     <li><a href="/results/Kennel">Kennels</a></li>
                     <li><a href="/results/Park">Pet Friendly Parks</a></li>
                     <li><a href="/results/Owner">Pet Owners</a></li>
-                </ul>
+                </ul >
                 {/* collapsable sidebar */}
-                <ul id="dropdown2" className="dropdown-content">
+                < ul id="dropdown2" className="dropdown-content" >
                     <li><a href="/results/Walker">Walkers</a></li>
                     <li><a href="/results/Groomer">Groomers</a></li>
                     <li><a href="/results/Sitter">Sitters</a></li>
@@ -25,9 +114,9 @@ class Nav extends Component {
                     <li><a href="/results/Kennel">Kennels</a></li>
                     <li><a href="/results/Park">Pet Friendly Parks</a></li>
                     <li><a href="/results/Owner">Pet Owners</a></li>
-                </ul>
+                </ul >
                 {/* Dropdown if logged in */}
-                <ul id="dropdown3" className="dropdown-content">
+                < ul id="dropdown3" className="dropdown-content" >
                     <li><a id="user-profile-link" href="">View Profile</a></li>
                     <li><a id="user-edit-link" href="">Edit Profile</a></li>
                     <li>
@@ -35,11 +124,11 @@ class Nav extends Component {
                             <button className="font3" id="user-logout-dropdown" type="submit" name="action">Logout</button>
                         </form>
                     </li>
-                </ul>
+                </ul >
 
                 <nav className="transparent z-depth-0">
                     <div className="nav-wrapper font3">
-                        <Link to ="/" className="brand-logo"><img src={logo} alt="Logo" height="64" /></Link>
+                        <Link to="/" className="brand-logo"><img src={logo} alt="Logo" height="64" /></Link>
                         {/* collapse trigger */}
                         <a href="#" data-target="mobile-collapse" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
@@ -60,17 +149,17 @@ class Nav extends Component {
                 </nav>
 
                 {/* collapsable sidebar */}
-                <ul className="sidenav" id="mobile-collapse">
+                < ul className="sidenav" id="mobile-collapse" >
                     <li><a className="dropdown-trigger-collapse" href="#!" data-target="dropdown2"><i
                         className="material-icons left">search</i>Search
             Options<i className="material-icons right">arrow_drop_down</i></a></li>
-                    <li className="logout-show"><a href="#modal1" className="modal-trigger">Loout</a></li>
+                    <li className="logout-show"><a href="#modal1" className="modal-trigger">Logout</a></li>
                     <li className="logout-show"><a href="/signUp">Sign-Up</a></li>
-                </ul>
+                </ul >
                 {/* END NAVBAR ========================================== */}
 
                 {/* Modal Structure ================================ */}
-                <div id="modal1" className="modal">
+                < div id="modal1" className="modal" >
                     <div className="modal-content">
                         <div className="container">
                             <div className="row">
@@ -105,7 +194,7 @@ class Nav extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
                 {/* End Modal =========================================== */}
             </>
         );

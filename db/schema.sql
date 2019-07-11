@@ -1,7 +1,11 @@
-CREATE DATABASE ol3j0cn1ayza2tod;
+-- CREATE DATABASE ol3j0cn1ayza2tod;
 USE 	ol3j0cn1ayza2tod;
 
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS pets;
+
 CREATE TABLE `users` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
