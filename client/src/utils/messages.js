@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { MESSAGES_TYPES, MESSAGE_SENDER, MESSAGE_BOX_SCROLL_DURATION } from '@constants';
+import { MESSAGES_TYPES, MESSAGE_SENDER, MESSAGE_BOX_SCROLL_DURATION } from 'client/src/constants.js';
 
 import Message from '@messagesComponents/Message';
 import Snippet from '@messagesComponents/Snippet';

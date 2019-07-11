@@ -2,7 +2,7 @@ import { List } from 'immutable';
 
 import { createReducer } from '@utils/store';
 import { createNewMessage, createLinkSnippet, createComponentMessage } from '@utils/messages';
-import { MESSAGE_SENDER } from '@constants';
+import { MESSAGE_SENDER } from 'client/src/constants.js';
 
 import * as actionTypes from '../actions/actionTypes';
 

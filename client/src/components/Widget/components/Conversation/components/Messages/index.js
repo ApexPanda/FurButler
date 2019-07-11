@@ -4,7 +4,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 
 import { hideAvatar } from 'client/src/store/actions/index.js';
-import { scrollToBottom } from '@utils/messages';
+import { scrollToBottom } from 'client/src/utils/messages.js';
 
 import Loader from './components/Loader';
 import './styles.scss';
