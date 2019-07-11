@@ -77,7 +77,7 @@ class ProfileDiv extends Component {
                                         <p>Pet {this.props.role}</p>
                                         <p>{this.props.location}</p>
                                         <p>Rating: {this.state.rating ? (
-                                            <span>{this.state.rating}/10</span>
+                                            <span>{this.state.rating} / 10</span>
                                         ) : (
                                                 <span>N/A</span>
                                             )}</p>
