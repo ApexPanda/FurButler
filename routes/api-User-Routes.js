@@ -19,7 +19,7 @@ module.exports = function (app) {
   app.get("/api/users/service", function (req, res) {
     db.User.findAll({
       where: {
-        service_provider: 1
+        client_type: "serviceProvider"
       }
     }).then(function (dbUser) {
       res.json(dbUser);
@@ -30,7 +30,7 @@ module.exports = function (app) {
   app.get("/api/users/owners", function (req, res) {
     db.User.findAll({
       where: {
-        pet_owner: 1
+        client_type: "petOwner"
       }
     }).then(function (dbUser) {
       res.json(dbUser);
@@ -103,6 +103,7 @@ module.exports = function (app) {
   // Send session data to front-end
   app.get("/api/session", function (req, res) {
     res.json(req.session.user);
+    console.log("api-user-routes getSession data: ", req.session.user);
   });
 
 }; 
