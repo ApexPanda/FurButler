@@ -137,6 +137,11 @@ p.main-text {
   background-size: cover;
   }
 
+.date-text {
+  font-size: 80%;
+  color: grey;
+}
+
 /* change profile styles */
 
 .long-text-box {

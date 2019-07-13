@@ -61,7 +61,7 @@ class Profile extends Component {
         this.loadProfile();
         this.loadPets();
         this.loadReviews();
-        console.log(this.state.id)
+        console.log(this.state.id);
     }
 
     loadProfile = () => {
@@ -180,6 +180,7 @@ class Profile extends Component {
                                         review={review.review}
                                         author={review.author_id}
                                         owner={review.owner_id}
+                                        date={review.createdAt}
                                     />
                                 ))}
                             </div>

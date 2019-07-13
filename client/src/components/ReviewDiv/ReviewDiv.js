@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import moment from 'moment';
 
 class ReviewDiv extends Component {
     state = {
@@ -41,8 +42,10 @@ class ReviewDiv extends Component {
 
                                 <p>Rating: {this.props.rating} / 10</p>
 
-                                <br></br>
+                                <br />
                                 <p>{this.props.review}</p>
+                                <br />
+                                <p className="date-text">Posted: {moment(this.props.date).format("MM-DD-YYYY")}</p>
                             </div>
                             <div className="card-action">
                                 <a href={profileLink} className="butlr-pink-text font2">View Author</a>
