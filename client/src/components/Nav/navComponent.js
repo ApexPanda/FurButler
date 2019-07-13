@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
-import "materialize-css/dist/css/materialize.min.css";
 import M from 'materialize-css';
 import logo from "../../images/logo/logoFinal.png";
 import API from "../../utils/API";
@@ -22,9 +21,11 @@ class Nav extends Component {
         });
     }
 
-    componentDidMount() {
-        //Auto initialize all materialize components
+    componentDidUpdate() {
         M.AutoInit();
+    }
+
+    componentDidMount() {
         // Login event listener and axios post ===================
         document.getElementById("login-submit").addEventListener("click", event => {
             event.preventDefault();
