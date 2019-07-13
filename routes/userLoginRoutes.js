@@ -5,7 +5,7 @@ const db = require("../Models");
 // Bcrypt==========================
 const bcrypt = require("bcrypt");
 
-const hash = "$2b$10$69SrwAoAUNC5F.gtLEvrNON6VQ5EX89vNqLEqU655Oy9PeT/HRM/a";
+let hash = "$2b$10$69SrwAoAUNC5F.gtLEvrNON6VQ5EX89vNqLEqU655Oy9PeT/HRM/a";
 
 //=======================================================================================
 
@@ -215,10 +215,8 @@ router.get("/dashboard", redirectLogin, function (req, res) {
 router.post("/api/login", function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
-  console.log(password);
-  console.log(email);
 
-  console.log("\nlogin details: " + email + ", " + password + "\n");
+  console.log("\nlogin details from userLoginRoutes: " + email + ", " + password + "\n");
 
   if (!email || !password) {
     console.log("No email/Pass");
@@ -229,26 +227,23 @@ router.post("/api/login", function (req, res) {
         email: email
       }
     }).then(function (dbUser) {
-      // console.log("USER: ", dbUser);
+      console.log("USER: ", dbUser.dataValues);
       hash = dbUser.dataValues.password;
       // console.log("HASH: ", hash);
       bcrypt
         .compare(password, hash, (err, pwMatches) => {
           console.log("I'm the password manager", pwMatches);
           if (pwMatches) {
-            // console.log("dbUserPassword :", dbUser.dataValues.password);
+            console.log("dbUserPassword :", dbUser.dataValues.password);
             console.log("PASSWORD MATCHES");
             req.session.userId = dbUser.dataValues.id;
             console.log("SESSION Id: ", req.session.userId);
-
-
 
             const userObj = {
               id: dbUser.dataValues.id,
               firstName: dbUser.dataValues.first_name,
               lastName: dbUser.dataValues.last_name,
-              serviceProvider: dbUser.dataValues.service_provider,
-              petOwner: dbUser.dataValues.pet_owner,
+              clientType: dbUser.dataValues.client_type,
               email: dbUser.dataValues.email,
               image: dbUser.dataValues.image
             };
@@ -256,6 +251,10 @@ router.post("/api/login", function (req, res) {
             req.session.user.loggedIn = true;
             //here the session's user object is updated with the users data. we can hit our /session endpoing witha  get request from the front end and get our user object.
             req.session.user.currentUser = userObj;
+
+            console.log("userObj from userLoginRoutes: ", userObj);
+            console.log("\nlogged in: ", req.session.user.loggedIn);
+            console.log("\ncurrent user from userLoginRoutes: ", req.session.user.currentUser);
 
 
             res.send({
@@ -284,5 +283,4 @@ router.post("/api/logout", function (req, res) {
 });
 
 module.exports = router;
-
 
