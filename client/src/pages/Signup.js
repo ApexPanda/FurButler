@@ -56,7 +56,7 @@ class Signup extends Component {
         if (this.state.clientType === "serviceProvider" && this.state.jobTitle === "") {
             alert("Please select a job title");
         } else if (this.state.firstName.length === 0 || this.state.lastName.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
-            alert("All fields must be filled out");
+            alert("All fields must be filled out.");
         } else if (this.state.password !== this.state.passwordCheck) {
             alert("Passwords do not match.");
         } else {

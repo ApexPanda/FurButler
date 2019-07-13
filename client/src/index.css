@@ -72,6 +72,10 @@ p.main-text {
   border-radius: 10px !important;
 }
 
+.job-box:hover {
+  transform: scale(1.05);
+}
+
 /* results styles */
 
 .result-profile-image {
@@ -79,6 +83,16 @@ p.main-text {
   height:200px;
   background-position: center;
   background-size: cover;
+}
+
+.result-card {
+  background-color: #224e82 !important;
+}
+
+.result-card:hover {
+  color: #ffff99 !important;
+  background-color: #0b3f72 !important;
+  transform: scale(1.05);
 }
 
 /* profile styles */
@@ -109,10 +123,17 @@ p.main-text {
   min-height:355px !important;
 }
 
+#add-pet-btn-div {
+  margin-right: 20px;
+}
+#add-pet-btn:hover {
+  transform: scale(1.1);
+  }
+
 /* change profile styles */
 
 .long-text-box {
-  height: 200px !important;
+  min-height: 500px !important;
 }
 
 .select-dropdown, .dropdown-trigger {
@@ -121,6 +142,9 @@ p.main-text {
 
 .margin-right-5 {
   margin-right: 5px;
+}
+.margin-about-edit {
+  margin-top: 20px;
 }
 /* fur butlr colors */
 
