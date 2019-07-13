@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
+import "materialize-css/dist/css/materialize.min.css";
+import M from 'materialize-css';
 import logo from "../../images/logo/logoFinal.png";
 import API from "../../utils/API";
 
@@ -21,6 +23,8 @@ class Nav extends Component {
     }
 
     componentDidMount() {
+        //Auto initialize all materialize components
+        M.AutoInit();
         // Login event listener and axios post ===================
         document.getElementById("login-submit").addEventListener("click", event => {
             event.preventDefault();
@@ -42,29 +46,30 @@ class Nav extends Component {
             }
             window.location.reload();
         });
+
+
         // Get session data and compare and change login button
-        API.getSession().then(function (data) {
+        API.getSession().then((data) => {
             console.log("API getSession data: ", data);
 
-
             if ("currentUser" in data.data) {
-                console.log('data from if statement: ', data.data.currentUser);
-                console.log('this: ', this); //undefined
-                this.handleLogin(data.data.currentUser); //========================= property handleLogin is undefined
+                console.log('data from if currentUser statement: ', data.data.currentUser);
+                this.handleLogin(data.data.currentUser);
 
                 // Store id to session so we can pull it out 
                 sessionStorage.setItem("userId", this.state.sessionid);
+                sessionStorage.setItem("userName", this.state.sessionName);
                 console.log("session id: " + this.state.sessionid);
                 console.log("session img: " + this.state.sessionImage);
                 console.log("session name: " + this.state.sessionName);
 
                 document.getElementById("profile-nav-image").style.backgroundImage = `url("${this.state.sessionImage}")`;
                 document.getElementById("session-name").innerHTML = this.state.sessionName;
-                document.getElementById("user-profile-link").setAttribute("href", "./userProfile?id=" + this.state.sessionid);
-                document.getElementById("user-edit-link").setAttribute("href", "./testChange?id=" + this.state.sessionid);
+                document.getElementById("user-profile-link").setAttribute("href", "./userProfile/id=" + this.state.sessionid);
+                document.getElementById("user-edit-link").setAttribute("href", "./testChange/id=" + this.state.sessionid);
                 // These will throw error due to HTML collection of getElementsByClassName
-                document.getElementsByClassName("login-show").classList.remove("hide");
-                document.getElementsByClassName("logout-show").classList.add("hide");
+                // document.getElementsByClassName("login-show").classList.remove("hide");
+                // document.getElementsByClassName("logout-show").classList.add("hide");
 
                 //Old way
                 // const sessionid = data.data.currentUser.id;
@@ -72,7 +77,7 @@ class Nav extends Component {
                 // const sessionName = data.data.currentUser.firstName;
                 // console.log("session id: " + sessionid);
                 // Store id to session so we can pull it out 
-                // sessionStorage.setItem("userId", sessionid); //Use the state for sessionId
+                // sessionStorage.setItem("userId", sessionid);
                 // console.log("session img: " + sessionImage);
                 // console.log("session name: " + sessionName);
                 // document.getElementById("profile-nav-image").style.backgroundImage = `url("${sessionImage}")`;
@@ -85,11 +90,12 @@ class Nav extends Component {
                 // document.getElementsByClassName("logout-show").classList.add("hide");
             } else {
                 console.log("User not logged in");
-                // this.setState({
-                //     isLoggedIn: false
-                // })
+                this.setState({
+                    isLoggedIn: false
+                })
             }
         });
+
     }
 
     render() {
@@ -136,14 +142,21 @@ class Nav extends Component {
                             <li><a className="dropdown-trigger waves-effect" href="#!" data-target="dropdown1"><i
                                 className="material-icons left">search</i>Search
                     Options<i className="material-icons right">arrow_drop_down</i></a></li>
-                            <li className="login-show hide"><a id="session-name" className="dropdown-trigger waves-effect" href="#!"
-                                data-target="dropdown3">
-                                Name<i className="material-icons right">arrow_drop_down</i></a></li>
-                            {/* Modal Trigger */}
-                            <li className="logout-show"><a className="waves-effect modal-trigger" href="#modal1">Login</a></li>
-
-                            <li className="logout-show"><a className="waves-effect" href="/signUp">Sign-Up</a></li>
-                            <li id="profile-nav-image" className="center login-show hide"></li>
+                            {/* Changes options if logged in */}
+                            {this.state.isLoggedIn ? (
+                                <>
+                                    <li className="login-show"><a id="session-name" className="dropdown-trigger waves-effect" href="#!"
+                                        data-target="dropdown3">
+                                        Name<i className="material-icons right">arrow_drop_down</i></a></li>
+                                    <li id="profile-nav-image" className="center login-show"></li>
+                                </>
+                            ) : (
+                                    <>
+                                        {/* Modal Trigger */}
+                                        <li className="logout-show"><a className="waves-effect modal-trigger" href="#modal1">Login</a></li>
+                                        <li className="logout-show"><a className="waves-effect" href="/signUp">Sign-Up</a></li>
+                                    </>
+                                )}
                         </ul>
                     </div>
                 </nav>
