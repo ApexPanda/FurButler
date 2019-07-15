@@ -89,8 +89,8 @@ module.exports = function (app) {
 
   // Send session data to front-end
   app.get("/api/session", function (req, res) {
-    res.json(req.session.user);
     console.log("api-user-routes getSession data: ", req.session.user);
+    res.json(req.session.user);
   });
 
 }; 

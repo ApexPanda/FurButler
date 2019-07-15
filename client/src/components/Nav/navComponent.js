@@ -39,7 +39,7 @@ class Nav extends Component {
                     password: password
                 })
                     .then(function (response) {
-                        console.log('axios login post response: ', response);
+                        console.log('\naxios login post response: ', response + "\n");
                     })
                     .catch(function (error) {
                         console.log('axios error: ', error);
@@ -48,47 +48,19 @@ class Nav extends Component {
             window.location.reload();
         });
 
-
         // Get session data and compare and change login button
         API.getSession().then((data) => {
             console.log("API getSession data: ", data);
-
             if ("currentUser" in data.data) {
                 console.log('data from if currentUser statement: ', data.data.currentUser);
                 this.handleLogin(data.data.currentUser);
-
-                // Store id to session so we can pull it out 
+                // Store id and userName to session so we can pull it out 
+                document.getElementById("profile-nav-image").style.backgroundImage = `url("${this.state.sessionImage}")`;
                 sessionStorage.setItem("userId", this.state.sessionid);
                 sessionStorage.setItem("userName", this.state.sessionName);
                 console.log("session id: " + this.state.sessionid);
                 console.log("session img: " + this.state.sessionImage);
                 console.log("session name: " + this.state.sessionName);
-
-                document.getElementById("profile-nav-image").style.backgroundImage = `url("${this.state.sessionImage}")`;
-                document.getElementById("session-name").innerHTML = this.state.sessionName;
-                document.getElementById("user-profile-link").setAttribute("href", "./userProfile/id=" + this.state.sessionid);
-                document.getElementById("user-edit-link").setAttribute("href", "./testChange/id=" + this.state.sessionid);
-                // These will throw error due to HTML collection of getElementsByClassName
-                // document.getElementsByClassName("login-show").classList.remove("hide");
-                // document.getElementsByClassName("logout-show").classList.add("hide");
-
-                //Old way
-                // const sessionid = data.data.currentUser.id;
-                // const sessionImage = data.data.currentUser.image;
-                // const sessionName = data.data.currentUser.firstName;
-                // console.log("session id: " + sessionid);
-                // Store id to session so we can pull it out 
-                // sessionStorage.setItem("userId", sessionid);
-                // console.log("session img: " + sessionImage);
-                // console.log("session name: " + sessionName);
-                // document.getElementById("profile-nav-image").style.backgroundImage = `url("${sessionImage}")`;
-                // document.getElementById("session-name").innerHTML = sessionName;
-                // document.getElementById("user-profile-link").setAttribute("href", "./userProfile?id=" + sessionid);
-                // document.getElementById("user-edit-link").setAttribute("href", "./testChange?id=" + sessionid);
-
-                // turn in to an array first?? Not working because of HTML collection is 'array like'
-                // document.getElementsByClassName("login-show").classList.remove("hide");
-                // document.getElementsByClassName("logout-show").classList.add("hide");
             } else {
                 console.log("User not logged in");
                 this.setState({
@@ -96,7 +68,6 @@ class Nav extends Component {
                 })
             }
         });
-
     }
 
     render() {
@@ -123,15 +94,15 @@ class Nav extends Component {
                     <li><a href="/results/Owner">Pet Owners</a></li>
                 </ul >
                 {/* Dropdown if logged in */}
-                < ul id="dropdown3" className="dropdown-content" >
-                    <li><a id="user-profile-link" href="">View Profile</a></li>
-                    <li><a id="user-edit-link" href="">Edit Profile</a></li>
+                <ul id="dropdown3" className="dropdown-content">
+                    <li><a id="user-profile-link" href={`./userProfile/id=${this.state.sessionid}`}>View Profile</a></li>{/* Figure out the paths and pages for these */}
+                    <li><a id="user-edit-link" href={`./testChange/id=${this.state.sessionid}`}>Edit Profile</a></li>
                     <li>
                         <form method="POST" action="/api/logout">
                             <button className="font3" id="user-logout-dropdown" type="submit" name="action">Logout</button>
                         </form>
                     </li>
-                </ul >
+                </ul>
 
                 <nav className="transparent z-depth-0">
                     <div className="nav-wrapper font3">
@@ -148,7 +119,7 @@ class Nav extends Component {
                                 <>
                                     <li className="login-show"><a id="session-name" className="dropdown-trigger waves-effect" href="#!"
                                         data-target="dropdown3">
-                                        Name<i className="material-icons right">arrow_drop_down</i></a></li>
+                                        {this.state.sessionName}<i className="material-icons right">arrow_drop_down</i></a></li>
                                     <li id="profile-nav-image" className="center login-show"></li>
                                 </>
                             ) : (

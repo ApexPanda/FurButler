@@ -5,7 +5,7 @@ export default {
     createNewUser: function (userSignUpData) {
         return axios.post("/api/users", userSignUpData);
     },
-    // Posts user login
+    // Posts user login to userLoginRoutes
     postLogin: function (userLoginData) {
         return axios.post("/api/login", userLoginData);
     },

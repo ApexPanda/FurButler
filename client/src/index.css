@@ -215,3 +215,12 @@ nav {
   font-size: 200%!important;
 
 }
+
+#user-logout-dropdown {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 16px;
+  color: #26a69a;
+  padding: 14px 16px;
+}
