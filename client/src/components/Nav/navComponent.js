@@ -95,8 +95,8 @@ class Nav extends Component {
                 </ul >
                 {/* Dropdown if logged in */}
                 <ul id="dropdown3" className="dropdown-content">
-                    <li><a id="user-profile-link" href={`./userProfile/id=${this.state.sessionid}`}>View Profile</a></li>{/* Figure out the paths and pages for these */}
-                    <li><a id="user-edit-link" href={`./testChange/id=${this.state.sessionid}`}>Edit Profile</a></li>
+                    <li><a id="user-profile-link" href={`/profile/${this.state.sessionid}`}>View Profile</a></li>{/* Figure out the paths and pages for these */}
+                    <li><a id="user-edit-link" href={`/chat`}>Messages</a></li>
                     <li>
                         <form method="POST" action="/api/logout">
                             <button className="font3" id="user-logout-dropdown" type="submit" name="action">Logout</button>

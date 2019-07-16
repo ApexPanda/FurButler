@@ -215,7 +215,8 @@ router.get("/dashboard", redirectLogin, function (req, res) {
 router.post("/api/login", function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
-
+  
+console.log('\nSESSION: ', req.session + '\n');
   console.log("\nlogin details from userLoginRoutes: " + email + ", " + password + "\n");
 
   if (!email || !password) {
