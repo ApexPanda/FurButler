@@ -1,54 +1,76 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { database } from '../firebase';
+import moment from 'moment';
 
-class Chat extends Component {
-    constructor() {
-        super();
-      
-        this.state = {
-          messages: [],
-        };
-      
-        this.onAddMessage = this.onAddMessage.bind(this);
-      }
-    
-      componentWillMount() {
-        const messagesRef = database.ref('messages')
-          .orderByKey()
-          .limitToLast(100);
-    
-        messagesRef.on('child_added', snapshot => {
-          const message = { text: snapshot.val(), id: snapshot.key };
-    
-          this.setState(prevState => ({
-            messages: [ message, ...prevState.messages ],
-          }));
-        });
-      }
-      
-      onAddMessage(event) {
-        event.preventDefault();
-      
-        database.ref('messages').push(this.input.value);
-      
-        this.input.value = '';
-      }
+let d = Date(Date.now());
+d.toString()
 
-        render() { 
+export default class Chat extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      messages: [],
+      username: '',
+      id: '',
+      receiverID: ''
+    };
+
+    this.onAddMessage = this.onAddMessage.bind(this);
+  }
+
+  componentWillMount() {
+    const id = sessionStorage.getItem('userId');
+    this.setState({ id: id ? id : 'Unknown' })
+
+    const username = sessionStorage.getItem('userName');
+    this.setState({ username: username ? username : 'Unknown' })
+
+    const receiverID = sessionStorage.getItem('receiverId');
+    this.setState({ receiverID: receiverID ? receiverID : 'Unknown' })
+
+
+    const messagesRef = database.ref('messages')
+      .orderByKey()
+      .limitToLast(100);
+
+    messagesRef.on('value', snapshot => {
+      let messagesObj = snapshot.val();
+      let messages = [];
+      Object.keys(messagesObj).forEach(key => messages.push(messagesObj[key]));
+      messages = messages.map((message) => { return { text: message.text, user: message.user, date: message.date, id: message.key } })
+      this.setState(prevState => ({
+        messages: messages,
+      }));
+    });
+  }
+
+  onAddMessage(event) {
+    event.preventDefault();
+    database.ref('messages').push({ text: this.input.value, user: this.state.username, id: this.state.id, receiverID: this.state.receiverID, date: d });
+    this.input.value = '';
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <div className="padding-13 messages-div">
+          <h1 className="profile-heading white-text center font1">Chat Messages</h1>
+          {this.state.messages.map((message) => {
+            const _class = message.user === this.state.username ? 'message-left' : 'message-right';
             return (
-        <div>
-            <form onSubmit={this.onAddMessage}>
-            <input type="text" ref={node => this.input = node}/>
-            <input type="submit"/>
-            <ul>
-                {this.state.messages.map(message =>
-                <li key={message.id}>{message.text}</li>
-                )}
-            </ul>
-            </form>
+              <div className={_class}>
+                <p className="message-text">{message.text}</p>
+                <p className="message-info butlr-green-text">{message.user}<span className="right">{moment(message.date).format("h:mm | MM-DD-YYYY")}</span></p>
+              </div>
+            )
+          })}
         </div>
-        );
-    }
+        <div className="container textarea-div">
+          <textarea className="text-area white" ref={node => this.input = node}></textarea>
+          <button className="btn btn-info send-btn " onClick={this.onAddMessage}>Send</button>
+        </div>
+      </div>
+    );
+  }
 }
-
-export default Chat;

@@ -15,8 +15,8 @@ class Profile extends Component {
         id: parseInt(this.props.match.params.id),
 
 
-        loginId: 1,
-        loggedIn: true,
+        loginId: 0,
+        loggedIn: false,
 
         addingPet: false,
         addingReview: false
@@ -58,10 +58,12 @@ class Profile extends Component {
     // end
 
     componentDidMount() {
+        this.checkLogin();
         this.loadProfile();
         this.loadPets();
         this.loadReviews();
         console.log(this.state.id);
+        sessionStorage.setItem("receiverId", this.state.id);
     }
 
     loadProfile = () => {
@@ -84,6 +86,14 @@ class Profile extends Component {
         API.getReviews(this.state.id)
             .then(res =>
                 this.setState({ reviews: res.data })
+            )
+            .catch(err => console.log(err));
+    }
+
+    checkLogin = () => {
+        API.getSession()
+            .then(res =>
+                this.setState({ loggedIn: res.data.loggedIn, loginId: res.data.currentUser.id })
             )
             .catch(err => console.log(err));
     }
@@ -209,7 +219,7 @@ class Profile extends Component {
                                 )
                         }
                         {/* State test buttons */}
-                        <div className="row">
+                        {/* <div className="row">
                             <span className="col">
                                 {this.state.loggedIn ? (<p className="green-text">Logged IN</p>) : (<p className="red-text">Logged OUT</p>)}
                                 <button onClick={this.handleLoginTest}>In</button>
@@ -230,7 +240,7 @@ class Profile extends Component {
                                 <button onClick={this.handleReviewOn}>On</button>
                                 <button onClick={this.handleReviewOff}>Off</button>
                             </span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
