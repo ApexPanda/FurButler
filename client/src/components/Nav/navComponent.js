@@ -15,7 +15,7 @@ class Nav extends Component {
     handleLogin = (data) => {
         this.setState({
             isLoggedIn: true,
-            sessionid: data.id,
+            sessionId: data.id,
             sessionImage: data.image,
             sessionName: data.firstName
         });
@@ -56,9 +56,9 @@ class Nav extends Component {
                 this.handleLogin(data.data.currentUser);
                 // Store id and userName to session so we can pull it out 
                 document.getElementById("profile-nav-image").style.backgroundImage = `url("${this.state.sessionImage}")`;
-                sessionStorage.setItem("userId", this.state.sessionid);
+                sessionStorage.setItem("userId", this.state.sessionId);
                 sessionStorage.setItem("userName", this.state.sessionName);
-                console.log("session id: " + this.state.sessionid);
+                console.log("session id: " + this.state.sessionId);
                 console.log("session img: " + this.state.sessionImage);
                 console.log("session name: " + this.state.sessionName);
             } else {
@@ -95,7 +95,7 @@ class Nav extends Component {
                 </ul >
                 {/* Dropdown if logged in */}
                 <ul id="dropdown3" className="dropdown-content">
-                    <li><a id="user-profile-link" href={`/profile/${this.state.sessionid}`}>View Profile</a></li>{/* Figure out the paths and pages for these */}
+                    <li><a id="user-profile-link" href={`/profile/${this.state.sessionId}`}>View Profile</a></li>
                     <li><a id="user-edit-link" href={`/chat`}>Messages</a></li>
                     <li>
                         <form method="POST" action="/api/logout">

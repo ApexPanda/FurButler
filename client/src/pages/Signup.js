@@ -3,13 +3,14 @@ import API from "../utils/API";
 
 class Signup extends Component {
     state = {
+        sessionId: 0,
         firstName: "",
         lastName: "",
         email: "",
         password: "",
         passwordCheck: "",
         clientType: "petOwner",
-        jobTitle: "None"
+        jobTitle: "Owner" // HERE ==========================
     };
 
     handleInputChange = (event) => {
@@ -53,7 +54,7 @@ class Signup extends Component {
             password: this.state.password
         };
 
-        if (this.state.clientType === "serviceProvider" && this.state.jobTitle === "") { //Look at changing this back to "None"
+        if (this.state.clientType === "serviceProvider" && this.state.jobTitle === "Owner") { // HERE ==========================
             alert("Please select a job title");
         } else if (this.state.firstName.length === 0 || this.state.lastName.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
             alert("All fields must be filled out.");
@@ -63,14 +64,23 @@ class Signup extends Component {
             API.createNewUser({
                 newUser
             })
-                .then(function (response) {
+                // Here is where to change user logged in when signed up
+                // or just make login go to user page and fire the login modal here
+                .then((response) => {
+                    // return API.getSession().then((data) => {
+                    //     this.setState({
+                    //         sessionId: data.data.currentUser.id
+                    //     });
+                    //     console.log('\ncurrentUser from signup page: ', data);
                     console.log('axios response: ', response);
+                    // })
                 })
                 .catch(function (error) {
                     console.log('axios error: ', error);
                 });
-            window.location.reload();
         }
+        window.location.reload();
+        //Put modal trigger here
     }
 
     render() {
@@ -125,7 +135,7 @@ class Signup extends Component {
                             </div>
                             <div id="jobs-div" className="row margin hide">
                                 <div className="input-field col s12">
-                                    <select id="job-title" value="None" onChange={this.handleJobTitleChange}>
+                                    <select id="job-title" value="Owner" onChange={this.handleJobTitleChange}> {/* HERE ==========================*/}
                                         <option value="None" disabled>Select Option</option>
                                         <option value="Walker">Pet Walker</option>
                                         <option value="Groomer">Pet Groomer</option>
@@ -154,7 +164,7 @@ class Signup extends Component {
                             </div>
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <button /*href="/results" */
+                                    <button
                                         id="register-btn"
                                         className="btn waves-effect waves-light col s12 butlr-green font2"
                                         type="submit"
