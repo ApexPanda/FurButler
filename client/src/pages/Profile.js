@@ -16,7 +16,7 @@ class Profile extends Component {
 
 
         loginId: 1,
-        loggedIn: true,
+        loggedIn: false,
 
         addingPet: false,
         addingReview: false
@@ -58,10 +58,11 @@ class Profile extends Component {
     // end
 
     componentDidMount() {
+        this.checkLogin();
         this.loadProfile();
         this.loadPets();
         this.loadReviews();
-        console.log(this.state.id);
+        console.log(this.state.loginId);
     }
 
     loadProfile = () => {
@@ -84,6 +85,14 @@ class Profile extends Component {
         API.getReviews(this.state.id)
             .then(res =>
                 this.setState({ reviews: res.data })
+            )
+            .catch(err => console.log(err));
+    }
+
+    checkLogin = () => {
+        API.getSession()
+            .then(res =>
+                this.setState({ loggedIn: res.data.loggedIn, loginId: res.data.currentUser.id })
             )
             .catch(err => console.log(err));
     }
