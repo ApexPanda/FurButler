@@ -215,7 +215,8 @@ router.get("/dashboard", redirectLogin, function (req, res) {
 router.post("/api/login", function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
-
+  
+console.log('\nSESSION: ', req.session + '\n');
   console.log("\nlogin details from userLoginRoutes: " + email + ", " + password + "\n");
 
   if (!email || !password) {
@@ -245,7 +246,7 @@ router.post("/api/login", function (req, res) {
               lastName: dbUser.dataValues.last_name,
               clientType: dbUser.dataValues.client_type,
               email: dbUser.dataValues.email,
-              image: dbUser.dataValues.image
+              image: dbUser.dataValues.image,
             };
             //we update the loggedIn key to have a true value. we can use this value on the fron end to see if the user is logged in or not.
             req.session.user.loggedIn = true;
@@ -255,7 +256,6 @@ router.post("/api/login", function (req, res) {
             console.log("userObj from userLoginRoutes: ", userObj);
             console.log("\nlogged in: ", req.session.user.loggedIn);
             console.log("\ncurrent user from userLoginRoutes: ", req.session.user.currentUser);
-
 
             res.send({
               "code": 200,
