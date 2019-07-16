@@ -2,21 +2,29 @@ import React, { Component } from 'react';
 import { database } from '../firebase';
 import moment from 'moment';
 
+let d = Date(Date.now());
+d.toString()
+
 export default class Chat extends Component {
   constructor() {
     super();
 
     this.state = {
       messages: [],
-      username: ''
+      username: '',
+      id: ''
     };
 
     this.onAddMessage = this.onAddMessage.bind(this);
   }
 
   componentWillMount() {
-    const username = localStorage.getItem('chat_username');
+    const id = sessionStorage.getItem('userId');
+    this.setState({ id: id ? id : 'Unknown' })
+
+    const username = sessionStorage.getItem('userName');
     this.setState({ username: username ? username : 'Unknown' })
+
     const messagesRef = database.ref('messages')
       .orderByKey()
       .limitToLast(100);
@@ -34,7 +42,7 @@ export default class Chat extends Component {
 
   onAddMessage(event) {
     event.preventDefault();
-    database.ref('messages').push({ text: this.input.value, user: this.state.username });
+    database.ref('messages').push({ text: this.input.value, user: this.state.username, id: this.state.id, date: d });
     this.input.value = '';
   }
 
