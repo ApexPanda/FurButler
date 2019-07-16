@@ -8,6 +8,7 @@ import Results from "./pages/Results";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Chat from "./pages/Chat";
+import Messages from "./pages/Messages";
 import NoMatch from "./pages/NoMatch";
 // import "./App.css";
 
@@ -29,6 +30,7 @@ class App extends Component {
             <Route exact path="/profile/:id" component={Profile} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/chat" component={Chat} />
+            <Route exact path="/messages" component={Messages} />
             <Route component={NoMatch} />
           </Switch>
         </div>
