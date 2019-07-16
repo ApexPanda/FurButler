@@ -21,10 +21,15 @@ export default {
     getRole: function (role) {
         return axios.get("/api/users/role/" + role);
     },
+    // Gets user image by id
+    getImage: function (id) {
+        return axios.get("/api/users/image/" + id);
+    },
     // Gets user by id
     getProfile: function (id) {
         return axios.get("/api/users/" + id);
     },
+
     // Creates new Pet
     createNewPet: function (petData) {
         return axios.post("/api/pets", petData);
@@ -41,6 +46,11 @@ export default {
     deletePet: function (id) {
         return axios.delete("/api/pets/" + id);
     },
+
+    // Creates new Pet
+    createNewReview: function (reviewData) {
+        return axios.post("/api/reviews", reviewData);
+    },
     // Gets reviews by owner_id
     getReviews: function (owner_id) {
         return axios.get("/api/reviews/" + owner_id);
@@ -49,12 +59,6 @@ export default {
     getRating: function (owner_id) {
         return axios.get("/api/reviews/avgRating/" + owner_id);
     },
-    //   // Deletes the book with the given id
-    //   deleteBook: function (id) {
-    //     return axios.delete("/api/books/" + id);
-    //   },
-    //   // Saves a book to the database
-    //   saveBook: function (bookData) {
-    //     return axios.post("/api/books", bookData);
-    //   }
+
+
 };
