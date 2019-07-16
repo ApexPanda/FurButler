@@ -15,7 +15,7 @@ class Profile extends Component {
         id: parseInt(this.props.match.params.id),
 
 
-        loginId: 1,
+        loginId: 0,
         loggedIn: false,
 
         addingPet: false,
