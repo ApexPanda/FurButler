@@ -4,6 +4,7 @@ import ProfileDiv from "../components/ProfileDiv";
 import PetDiv from "../components/PetDiv";
 import ReviewDiv from "../components/ReviewDiv";
 import NewPetForm from "../components/NewPetForm";
+import NewReviewForm from "../components/NewReviewForm";
 
 class Profile extends Component {
 
@@ -17,7 +18,8 @@ class Profile extends Component {
         loginId: 1,
         loggedIn: true,
 
-        addingPet: false
+        addingPet: false,
+        addingReview: false
 
     };
 
@@ -38,13 +40,14 @@ class Profile extends Component {
         this.setState({ addingPet: false })
     }
 
-    handleIdMinus = () => {
-        this.setState({ loginId: this.state.loginId - 1 })
+    handleReviewOn = () => {
+        this.setState({ addingReview: true })
     }
 
-    handleIdPlus = () => {
-        this.setState({ loginId: this.state.loginId + 1 })
+    handleReviewOff = () => {
+        this.setState({ addingReview: false })
     }
+
     handleIdMinus = () => {
         this.setState({ loginId: this.state.loginId - 1 })
     }
@@ -58,7 +61,7 @@ class Profile extends Component {
         this.loadProfile();
         this.loadPets();
         this.loadReviews();
-        console.log(this.state.id)
+        console.log(this.state.id);
     }
 
     loadProfile = () => {
@@ -177,6 +180,7 @@ class Profile extends Component {
                                         review={review.review}
                                         author={review.author_id}
                                         owner={review.owner_id}
+                                        date={review.createdAt}
                                     />
                                 ))}
                             </div>
@@ -187,6 +191,23 @@ class Profile extends Component {
                                     <br></br>
                                 </div>
                             )}
+
+                        {!this.state.addingReview && this.state.loggedIn && this.state.loginId != this.state.id ?
+                            (<div id="add-pet-btn-div" className="row right-align">
+                                <span className="margin-right-5 butlr-pink-text font3">Add Review</span>
+                                <a id="add-pet-btn" className="btn-floating waves-effect waves-light butlr-pink"
+                                    onClick={this.handleReviewOn}><i
+                                        className="material-icons">add</i>
+                                </a>
+                            </div>) : this.state.addingReview && this.state.loggedIn && this.state.loginId != this.state.id ? (
+                                <NewReviewForm
+                                    ownerId={this.state.id}
+                                    authorId={this.state.loginId}
+                                    handleReviewOff={this.handleReviewOff} />
+                            ) : (
+                                    null
+                                )
+                        }
                         {/* State test buttons */}
                         <div className="row">
                             <span className="col">
@@ -203,6 +224,11 @@ class Profile extends Component {
                                 {this.state.addingPet ? (<p className="green-text">Pet ON</p>) : (<p className="red-text">Pet OFF</p>)}
                                 <button onClick={this.handlePetOn}>On</button>
                                 <button onClick={this.handlePetOff}>Off</button>
+                            </span>
+                            <span className="col right">
+                                {this.state.addingReview ? (<p className="green-text">Review ON</p>) : (<p className="red-text">Review OFF</p>)}
+                                <button onClick={this.handleReviewOn}>On</button>
+                                <button onClick={this.handleReviewOff}>Off</button>
                             </span>
                         </div>
                     </div>

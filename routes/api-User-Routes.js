@@ -37,7 +37,7 @@ module.exports = function (app) {
     });
   });
 
-  // Get pet owners users
+  // Get users by role
   app.get("/api/users/role/:role", function (req, res) {
     db.User.findAll({
       where: {
@@ -57,6 +57,19 @@ module.exports = function (app) {
     }).then(function (dbUser) {
       res.json(dbUser);
     });
+  });
+
+  // Get one user
+  app.get("/api/users/image/:id", function (req, res) {
+    db.User.findOne(
+      {
+        attributes: ['id', 'image'],
+        where: {
+          id: req.params.id
+        }
+      }).then(function (dbUser) {
+        res.json(dbUser);
+      });
   });
 
   // Create a new user
