@@ -218,7 +218,7 @@ class Profile extends Component {
                                 )
                         }
                         {/* State test buttons */}
-                        <div className="row">
+                        {/* <div className="row">
                             <span className="col">
                                 {this.state.loggedIn ? (<p className="green-text">Logged IN</p>) : (<p className="red-text">Logged OUT</p>)}
                                 <button onClick={this.handleLoginTest}>In</button>
@@ -239,7 +239,7 @@ class Profile extends Component {
                                 <button onClick={this.handleReviewOn}>On</button>
                                 <button onClick={this.handleReviewOff}>Off</button>
                             </span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
