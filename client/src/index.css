@@ -158,6 +158,39 @@ p.main-text {
 .margin-about-edit {
   margin-top: 20px;
 }
+
+/* messages style */
+
+.message-left {
+    width: 55%;
+    display: inline-block;
+    border: 2px solid #dedede;
+    background-color: #224e82 ;
+    border-radius: 20px;
+    padding: 20px 10px 10px 10px;
+    margin: 10px 0;
+    color: white;
+}
+.message-right {
+    width: 55%;
+    float: right;
+    border: 2px solid #dedede;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    padding: 20px 10px 10px 10px;
+    margin: 10px 0;
+}
+
+.message-text {
+  font-size: 150%;
+  margin: 5px;
+}
+
+.message-info {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 80%;
+}
 /* fur butlr colors */
 
 .butlr-pink {
@@ -226,13 +259,4 @@ nav {
   padding-right: 2em;
   font-size: 200%!important;
 
-}
-
-#user-logout-dropdown {
-  border: none;
-  background: none;
-  outline: none;
-  font-size: 16px;
-  color: #26a69a;
-  padding: 14px 16px;
 }
