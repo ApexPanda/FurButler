@@ -5,11 +5,11 @@ export default {
     createNewUser: function (userSignUpData) {
         return axios.post("/api/users", userSignUpData);
     },
-    // Posts user login
+    // Posts user login to userLoginRoutes
     postLogin: function (userLoginData) {
         return axios.post("/api/login", userLoginData);
     },
-    // Gets user data from db to compare to login
+    // Gets user data from db to compare to login (from api-User-Routes)
     getSession: function () {
         return axios.get("/api/session");
     },
