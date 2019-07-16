@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { database } from './firebase';
+import API from "../utils/API";
 
 export default class User extends Component {
   constructor() {
