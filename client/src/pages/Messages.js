@@ -7,7 +7,8 @@ class MessagesPage extends Component {
 
     state = {
         users: [],
-        user: ''
+        user: '',
+        receiverID: parseInt(this.props.match.params.id)
     };
 
     componentDidMount() {
@@ -15,7 +16,7 @@ class MessagesPage extends Component {
     }
 
     loadMessages = () => {
-        API.getProfile(this.state.firstName)
+        API.getProfile(this.state.receiverID)
             .then(res =>
                 this.setState({ user: res.data })
             )

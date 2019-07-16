@@ -12,7 +12,8 @@ export default class Chat extends Component {
     this.state = {
       messages: [],
       username: '',
-      id: ''
+      id: '',
+      receiverID: ''
     };
 
     this.onAddMessage = this.onAddMessage.bind(this);
@@ -24,6 +25,10 @@ export default class Chat extends Component {
 
     const username = sessionStorage.getItem('userName');
     this.setState({ username: username ? username : 'Unknown' })
+
+    const receiverID = sessionStorage.getItem('receiverId');
+    this.setState({ receiverID: receiverID ? receiverID : 'Unknown' })
+
 
     const messagesRef = database.ref('messages')
       .orderByKey()
@@ -42,7 +47,7 @@ export default class Chat extends Component {
 
   onAddMessage(event) {
     event.preventDefault();
-    database.ref('messages').push({ text: this.input.value, user: this.state.username, id: this.state.id, date: d });
+    database.ref('messages').push({ text: this.input.value, user: this.state.username, id: this.state.id, receiverID: this.state.receiverID, date: d });
     this.input.value = '';
   }
 

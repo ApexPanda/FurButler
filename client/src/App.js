@@ -29,7 +29,7 @@ class App extends Component {
             <Route exact path="/results/:role" component={Results} />
             <Route exact path="/profile/:id" component={Profile} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/chat" component={Chat} />
+            <Route exact path="/chat/:id" component={Chat} />
             <Route exact path="/messages" component={Messages} />
             <Route component={NoMatch} />
           </Switch>
