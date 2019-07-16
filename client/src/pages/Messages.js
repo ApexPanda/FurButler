@@ -1,40 +1,38 @@
 import React, { Component } from "react";
 import { database } from '../firebase';
 import API from "../utils/API";
+import Messages from "../components/Messages";
 
-class Messages extends Component {
-
+class MessagesPage extends Component {
 
     state = {
         users: [],
-        role: this.props.match.params.role
-
+        user: ''
     };
 
     componentDidMount() {
-        this.loadResults();
-        console.log(this.state.role)
+        this.loadMessages();
     }
 
-    loadResults = () => {
-        API.getRole(this.state.role)
+    loadMessages = () => {
+        API.getProfile(this.state.firstName)
             .then(res =>
-                this.setState({ users: res.data })
+                this.setState({ user: res.data })
             )
             .catch(err => console.log(err));
-    }
+      }
 
     render() {
         return (
             <div>
 
-                <h1 className="profile-heading white-text center font1">Pet {this.state.role}s</h1>
+                <h1 className="profile-heading white-text center font1">Messages</h1>
 
                 <div className="container">
                     {this.state.users.length ? (
                         <div>
                             {this.state.users.map(user => (
-                                <ResultProfile
+                                <Messages
                                     key={user.id}
                                     id={user.id}
                                     first={user.first_name}
@@ -55,4 +53,4 @@ class Messages extends Component {
     }
 }
 
-export default Messages;
+export default MessagesPage;
