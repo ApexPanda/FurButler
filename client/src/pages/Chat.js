@@ -1,54 +1,63 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { database } from '../firebase';
 
-class Chat extends Component {
-    constructor() {
-        super();
-      
-        this.state = {
-          messages: [],
-        };
-      
-        this.onAddMessage = this.onAddMessage.bind(this);
-      }
-    
-      componentWillMount() {
-        const messagesRef = database.ref('messages')
-          .orderByKey()
-          .limitToLast(100);
-    
-        messagesRef.on('child_added', snapshot => {
-          const message = { text: snapshot.val(), id: snapshot.key };
-    
-          this.setState(prevState => ({
-            messages: [ message, ...prevState.messages ],
-          }));
-        });
-      }
-      
-      onAddMessage(event) {
-        event.preventDefault();
-      
-        database.ref('messages').push(this.input.value);
-      
-        this.input.value = '';
-      }
+export default class Chat extends Component {
+  constructor() {
+    super();
 
-        render() { 
+    this.state = {
+      messages: [],
+      username: ''
+    };
+
+    this.onAddMessage = this.onAddMessage.bind(this);
+  }
+
+  componentWillMount() {
+    const username = localStorage.getItem('chat_username');
+    this.setState({username: username ? username : 'Unknown'})
+    const messagesRef = database.ref('messages')
+      .orderByKey()
+      .limitToLast(100);
+
+    messagesRef.on('value', snapshot => {
+      let messagesObj = snapshot.val();
+      let messages = [];
+      Object.keys(messagesObj).forEach(key =>  messages.push(messagesObj[key]));
+      messages = messages.map((message) => { return {text: message.text, user: message.user, id: message.key}})
+      this.setState(prevState => ({
+        messages: messages,
+      }));
+    });
+  }
+
+  onAddMessage(event) {
+    event.preventDefault();
+    database.ref('messages').push({text: this.input.value, user: this.state.username});
+    this.input.value = '';
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="padding-13 messages-div">
+            <h2>Chat Messages</h2>
+            {this.state.messages.map((message) => {
+             const _class = message.user === this.state.username ? 'message-left container' : 'message-right container';
             return (
-        <div>
-            <form onSubmit={this.onAddMessage}>
-            <input type="text" ref={node => this.input = node}/>
-            <input type="submit"/>
-            <ul>
-                {this.state.messages.map(message =>
-                <li key={message.id}>{message.text}</li>
-                )}
-            </ul>
-            </form>
+                <div className={_class}>
+                  <h6 className="name-heading">{message.user}</h6>
+                  <p className="marg-left-10">{message.text}</p>
+                  <span className="time-left"></span>
+                </div>
+            )
+            })}
         </div>
-        );
-    }
+      <div className="container textarea-div">
+        <textarea className="text-area" ref={node => this.input = node}></textarea>
+        <button className="btn btn-info send-btn " onClick={this.onAddMessage}>Send</button>
+      </div>
+    </div>
+    );
+  }
 }
-
-export default Chat;
