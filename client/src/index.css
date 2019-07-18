@@ -179,7 +179,7 @@ p.main-text {
 }
 .message-right {
     width: 55%;
-    float: right;
+    display: inline-block;
     border: 2px solid #dedede;
     background-color: whitesmoke;
     border-radius: 20px;

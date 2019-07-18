@@ -21,7 +21,7 @@ export default class Chat extends Component {
 
   componentDidMount() {
     sessionStorage.setItem("receiverId", this.state.receiverID);
-}
+  }
 
   componentWillMount() {
     const id = sessionStorage.getItem('userId');
@@ -63,7 +63,7 @@ export default class Chat extends Component {
   // }
 
   scrollToBottom = () => {
-    this.messagesEnd.scrollIntoView(false);
+    this.messagesEnd.scrollIntoView({ block: "end", inline: "nearest", behavior: "smooth" })
   }
 
   componentDidMount() {
@@ -80,26 +80,27 @@ export default class Chat extends Component {
         <div className="padding-13 messages-div">
           <h1 className="profile-heading white-text center font1">Chat Messages</h1>
           {this.state.messages.map((message) => {
-            const _class = message.user === this.state.username ? 'message-left grow' : 'message-right grow';
+            const _class = message.user === this.state.username ? 'message-left grow' : 'message-right grow right';
             return (
-              <div className={_class}>
-                <p className="message-text">{message.text}</p>
-                <p className="message-info butlr-green-text">{message.user}<span className="right">{moment(message.date).format("h:mm | MM-DD-YYYY")}</span></p>
+              <div className="row">
+                <div className={_class}>
+                  <p className="message-text">{message.text}</p>
+                  <p className="message-info butlr-green-text">{message.user}<span className="right">{moment(message.date).format("h:mm | MM-DD-YYYY")}</span></p>
+                </div>
               </div>
             )
           })}
         </div>
 
-        <div className="spacer"></div>
-
-        <div ref={(el) => { this.messagesEnd = el; }}>
-        </div>
+        <div className="spacer row"></div>
 
         <div className="container textarea-div message-input">
           <textarea className="text-area white" ref={node => this.input = node}></textarea>
           <button className="btn btn-info send-btn right" onClick={this.onAddMessage}>Send</button>
         </div>
 
+        <div ref={(el) => { this.messagesEnd = el; }}>
+        </div>
 
 
       </div>
