@@ -51,6 +51,10 @@ export default class Chat extends Component {
     database.ref('messages').push({ text: this.input.value, user: this.state.username, id: this.state.id, receiverID: this.state.receiverID, date: d });
     this.input.value = '';
 
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
     var scrollingElement = (document.scrollingElement || document.body);
     scrollingElement.scrollTop = (scrollingElement.scrollHeight);
   }
