@@ -161,6 +161,12 @@ p.main-text {
 
 /* messages style */
 
+.grow{
+    animation: grow .5s;
+    animation-iteration-count: 1;
+    transform: scale(1.0);
+}
+
 .message-left {
     width: 55%;
     display: inline-block;
@@ -201,7 +207,7 @@ p.main-text {
 }
 
 .spacer {
-  height: 260px;
+  height: 140px;
 }
 
 /* fur butlr colors */
@@ -281,4 +287,9 @@ nav {
   font-size: 16px;
   color: #26a69a;
   padding: 14px 16px;
+}
+
+@keyframes grow {
+    0% {transform: scale(0.8)}
+    100% {transform: scale(1.0)}
 }

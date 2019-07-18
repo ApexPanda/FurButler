@@ -119,7 +119,8 @@ class Nav extends Component {
                                 <>
                                     <li className="login-show"><a id="session-name" className="dropdown-trigger waves-effect" href="#!"
                                         data-target="dropdown3">
-                                        {this.state.sessionName}<i className="material-icons right">arrow_drop_down</i></a></li>
+                                        {this.state.sessionName}
+                                        <i className="material-icons right">arrow_drop_down</i></a></li>
                                     <li id="profile-nav-image" className="center login-show"></li>
                                 </>
                             ) : (

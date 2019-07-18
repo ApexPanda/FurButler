@@ -43,7 +43,6 @@ export default class Chat extends Component {
         messages: messages,
       }));
     });
-
   }
 
   onAddMessage(event) {
@@ -54,9 +53,21 @@ export default class Chat extends Component {
     this.scrollToBottom();
   }
 
-  scrollToBottom() {
-    var scrollingElement = (document.scrollingElement || document.body);
-    scrollingElement.scrollTop = (scrollingElement.scrollHeight);
+  // scrollToBottom() {
+  //   var scrollingElement = (document.scrollingElement || document.body);
+  //   scrollingElement.scrollTop = (scrollingElement.scrollHeight);
+  // }
+
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView(false);
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   render() {
@@ -65,7 +76,7 @@ export default class Chat extends Component {
         <div className="padding-13 messages-div">
           <h1 className="profile-heading white-text center font1">Chat Messages</h1>
           {this.state.messages.map((message) => {
-            const _class = message.user === this.state.username ? 'message-left' : 'message-right';
+            const _class = message.user === this.state.username ? 'message-left grow' : 'message-right grow';
             return (
               <div className={_class}>
                 <p className="message-text">{message.text}</p>
@@ -77,10 +88,15 @@ export default class Chat extends Component {
 
         <div className="spacer"></div>
 
+        <div ref={(el) => { this.messagesEnd = el; }}>
+        </div>
+
         <div className="container textarea-div message-input">
           <textarea className="text-area white" ref={node => this.input = node}></textarea>
           <button className="btn btn-info send-btn right" onClick={this.onAddMessage}>Send</button>
         </div>
+
+
 
       </div>
     );
