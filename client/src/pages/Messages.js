@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { database } from '../firebase';
 import API from "../utils/API";
 import Messages from "../components/Messages";
 
@@ -7,21 +6,21 @@ class MessagesPage extends Component {
 
     state = {
         users: [],
-        user: '',
-        receiverID: parseInt(this.props.match.params.id)
+        userId: this.props.match.params.id
     };
 
     componentDidMount() {
-        this.loadMessages();
+        this.loadChats();
+        console.log(this.state.userId)
     }
 
-    loadMessages = () => {
-        API.getProfile(this.state.receiverID)
+    loadChats = () => {
+        API.getAllUsers(this.state.userId)
             .then(res =>
-                this.setState({ user: res.data })
+                this.setState({ users: res.data })
             )
             .catch(err => console.log(err));
-      }
+    }
 
     render() {
         return (
@@ -45,7 +44,7 @@ class MessagesPage extends Component {
                             ))}
                         </div>
                     ) : (
-                            <h2 className="profile-heading white-text center font2">No Results match your criteria</h2>
+                            <h3 className="profile-heading white-text center font2">you have no messages</h3>
                         )}
 
                 </div>
