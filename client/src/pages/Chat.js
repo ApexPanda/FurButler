@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { database } from '../firebase';
 import moment from 'moment';
+import API from "../utils/API";
 
 let d = Date(Date.now());
 d.toString()
@@ -12,12 +13,15 @@ export default class Chat extends Component {
     this.state = {
       messages: [],
       username: '',
-      id: '',
-      receiverID: ''
+      id: ''
     };
 
     this.onAddMessage = this.onAddMessage.bind(this);
   }
+
+  componentDidMount() {
+    sessionStorage.setItem("receiverId", this.state.receiverID);
+}
 
   componentWillMount() {
     const id = sessionStorage.getItem('userId');
@@ -26,7 +30,7 @@ export default class Chat extends Component {
     const username = sessionStorage.getItem('userName');
     this.setState({ username: username ? username : 'Unknown' })
 
-    const receiverID = sessionStorage.getItem('receiverId');
+    const receiverID = parseInt(this.props.match.params.id);
     this.setState({ receiverID: receiverID ? receiverID : 'Unknown' })
 
 
