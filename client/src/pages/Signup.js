@@ -37,7 +37,6 @@ class Signup extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // const instance = M.Modal.getInstance();
         const jobTitleChange = this.state.clientType === "petOwner" ? "Owner" : this.state.jobTitle;
         this.setState({
             firstName: this.state.firstName.trim(),
@@ -66,24 +65,14 @@ class Signup extends Component {
             API.createNewUser({
                 newUser
             })
-                // Here is where to change user logged in when signed up
-                // or just make login go to user page and fire the login modal here
                 .then((response) => {
-                    // return API.getSession().then((data) => {
-                    //     this.setState({
-                    //         sessionId: data.data.currentUser.id
-                    //     });
-                    //     console.log('\ncurrentUser from signup page: ', data);
-                    console.log('axios response: ', response);
-                    // })
+                    console.log('axios response: ', response);                    
                 })
                 .catch(function (error) {
                     console.log('axios error: ', error);
                 });
         }
         window.location.reload();
-        //Put modal trigger here
-        // instance.open('Modal1');
     }
 
     render() {
