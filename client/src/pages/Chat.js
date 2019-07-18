@@ -43,12 +43,16 @@ export default class Chat extends Component {
         messages: messages,
       }));
     });
+
   }
 
   onAddMessage(event) {
     event.preventDefault();
     database.ref('messages').push({ text: this.input.value, user: this.state.username, id: this.state.id, receiverID: this.state.receiverID, date: d });
     this.input.value = '';
+
+    var scrollingElement = (document.scrollingElement || document.body);
+    scrollingElement.scrollTop = (scrollingElement.scrollHeight);
   }
 
   render() {
@@ -66,10 +70,14 @@ export default class Chat extends Component {
             )
           })}
         </div>
-        <div className="container textarea-div">
+
+        <div className="spacer"></div>
+
+        <div className="container textarea-div message-input">
           <textarea className="text-area white" ref={node => this.input = node}></textarea>
-          <button className="btn btn-info send-btn " onClick={this.onAddMessage}>Send</button>
+          <button className="btn btn-info send-btn right" onClick={this.onAddMessage}>Send</button>
         </div>
+
       </div>
     );
   }

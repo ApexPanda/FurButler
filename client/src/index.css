@@ -191,6 +191,19 @@ p.main-text {
   padding-right: 10px;
   font-size: 80%;
 }
+
+.message-input {
+  position: fixed;
+  bottom: 0;
+  padding: 20px;
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+.spacer {
+  height: 260px;
+}
+
 /* fur butlr colors */
 
 .butlr-pink {
