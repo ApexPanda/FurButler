@@ -63,7 +63,6 @@ class Profile extends Component {
         this.loadPets();
         this.loadReviews();
         console.log(this.state.id);
-        sessionStorage.setItem("receiverId", this.state.id);
     }
 
     loadProfile = () => {
