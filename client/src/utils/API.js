@@ -21,6 +21,10 @@ export default {
     getRole: function (role) {
         return axios.get("/api/users/role/" + role);
     },
+    // Gets all users
+    getAllUsers: function () {
+        return axios.get("/api/users");
+    },
     // Gets user image by id
     getImage: function (id) {
         return axios.get("/api/users/image/" + id);
@@ -46,8 +50,7 @@ export default {
     deletePet: function (id) {
         return axios.delete("/api/pets/" + id);
     },
-
-    // Creates new Pet
+    // Creates new Review
     createNewReview: function (reviewData) {
         return axios.post("/api/reviews", reviewData);
     },
@@ -59,6 +62,11 @@ export default {
     getRating: function (owner_id) {
         return axios.get("/api/reviews/avgRating/" + owner_id);
     },
+    // Gets chat by id 
+    getChats: function (id) {
+        return axios.get("/api/chats" + id);
+    },
+
 
 
 };
