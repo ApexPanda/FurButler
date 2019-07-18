@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom';
 import M from 'materialize-css';
 import logo from "../../images/logo/logoFinal.png";
 import API from "../../utils/API";
@@ -9,16 +9,21 @@ class Nav extends Component {
         isLoggedIn: false,
         sessionImage: "",
         sessionName: "",
-        sessionId: 0
+        sessionId: 0,
+        redirect: false
     }
 
     handleLogin = (data) => {
+        console.log(this.state, data);
+        // debugger;
         this.setState({
             isLoggedIn: true,
             sessionId: data.id,
             sessionImage: data.image,
-            sessionName: data.firstName
+            sessionName: data.firstName,
+            redirect: true
         });
+
     }
 
     componentDidUpdate() {
@@ -69,10 +74,18 @@ class Nav extends Component {
             }
         });
     }
+    
+renderRedirect = () => {    
+    const changePage = this.state.redirect;
+    if (changePage === true) {
+        return <Redirect to={`/profile/${this.state.sessionId}`} />;
+    }
+}
 
     render() {
         return (
             <>
+            {this.renderRedirect()}
                 {/* Main Dropdown Structure */}
                 < ul id="dropdown1" className="dropdown-content" >
                     <li><a href="/results/Walker">Walkers</a></li>

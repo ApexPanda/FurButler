@@ -183,19 +183,18 @@ router.get("/results", function (req, res) {
   });
 });
 
-router.get("/dashboard", redirectLogin, function (req, res) {
+router.get("/profile/:id", redirectLogin, function (req, res) {
   // This will load title and description for each page separately=================================
-  res.locals.metaTags = {
-    title: "Your profile",
-    description: "A place where pet owners can find all their needs in one place!",
-    keywords: "pet grooming, pet sitting, pet walking, veterinarian services, kennel services, pet trainers, pet friendly parks",
-    bg: "dashboard"
-  };
-  res.render("dashboard", {
-    layout: "main"
-  });
-  console.log("DASHBOARD SESSION: ", req.session);
-  console.log("DASHBOARD userId: ", req.session.userId);
+  // res.locals.metaTags = {
+  //   title: "Your profile",
+  //   description: "A place where pet owners can find all their needs in one place!",
+  //   keywords: "pet grooming, pet sitting, pet walking, veterinarian services, kennel services, pet trainers, pet friendly parks",
+  //   bg: "dashboard"
+  // };
+  // res.render("/profile/:id");
+  console.log("PROFILE SESSION: ", req.session);
+  console.log("PROFILE userId: ", req.session.userId);
+  res.end();
   // Here is where to push info to front-end=================================================
   // or may have to make a post route for dashboard=========================================
 });
@@ -274,7 +273,7 @@ router.post("/api/login", function (req, res) {
 router.post("/api/logout", function (req, res) {
   req.session.destroy(function (err) {
     if (err) {
-      return res.redirect("/dashboard");
+      return res.redirect("/profile");
     }
     res.clearCookie("connect.sid");
     res.redirect("/");

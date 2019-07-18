@@ -14,7 +14,7 @@ CREATE TABLE `users` (
  `role` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
- `image` varbinary(200),
+ `image` varchar(255),
  `about_me` varchar(300) COLLATE utf8_unicode_ci NULL,
  `location` varchar(30) COLLATE utf8_unicode_ci NULL,
  `created` datetime NOT NULL,

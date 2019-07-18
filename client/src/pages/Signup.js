@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import M from 'materialize-css';
 import API from "../utils/API";
 
 class Signup extends Component {
@@ -36,6 +37,7 @@ class Signup extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        // const instance = M.Modal.getInstance();
         const jobTitleChange = this.state.clientType === "petOwner" ? "Owner" : this.state.jobTitle;
         this.setState({
             firstName: this.state.firstName.trim(),
@@ -81,6 +83,7 @@ class Signup extends Component {
         }
         window.location.reload();
         //Put modal trigger here
+        // instance.open('Modal1');
     }
 
     render() {
@@ -135,7 +138,7 @@ class Signup extends Component {
                             </div>
                             <div id="jobs-div" className="row margin hide">
                                 <div className="input-field col s12">
-                                    <select id="job-title" value="Owner" onChange={this.handleJobTitleChange}> {/* HERE ==========================*/}
+                                    <select id="job-title" value="None" onChange={this.handleJobTitleChange}> {/* HERE ==========================*/}
                                         <option value="None" disabled>Select Option</option>
                                         <option value="Walker">Pet Walker</option>
                                         <option value="Groomer">Pet Groomer</option>
