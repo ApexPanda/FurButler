@@ -96,7 +96,7 @@ export default class Chat extends Component {
 
         <div className="container textarea-div message-input">
           <textarea className="text-area white" ref={node => this.input = node}></textarea>
-          <button className="btn btn-info send-btn right" onClick={this.onAddMessage}>Send</button>
+          <button className="btn btn-info butlr-green font2 send-btn right" onClick={this.onAddMessage}>Send</button>
         </div>
 
         <div ref={(el) => { this.messagesEnd = el; }}>
