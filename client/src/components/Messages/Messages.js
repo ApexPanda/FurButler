@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 import dog from "../../images/site/default-profile-2.jpg";
 import cat from "../../images/site/default-profile-1.jpg";
 import fish from "../../images/site/default-profile-3.jpg";
@@ -8,23 +8,9 @@ class MessagesCard extends Component {
 
     state = {
         chatLink: "/chat/" + this.props.id
-
     };
 
-    componentDidMount() {
-        this.loadMessages();
-    }
-
-    loadMessages = () => {
-        API.getMessages(this.props.first_name)
-            .then(res =>
-                this.setState({ user: res.data })
-            )
-            .catch(err => console.log(err));
-    }
-
     render() {
-
         const images = [dog, cat, fish]
         const placeHolder = images[Math.floor(Math.random() * images.length)]
         let divStyle;
@@ -43,7 +29,6 @@ class MessagesCard extends Component {
 
             <div className="col s6 m6">
          
-            <a href={this.state.profileLink} className="butlr-yellow-text font2">
             <a href={this.state.chatLink} className="butlr-yellow-text font2">
                 <div className="card horizontal result-card white-text">
                     <div className="card-image result-profile-image"
@@ -58,7 +43,7 @@ class MessagesCard extends Component {
                         </div>                    
                     </div>
                 </div>
-            </a></a>
+            </a>
                 <br />
             </div >
         );
