@@ -176,6 +176,7 @@ p.main-text {
     padding: 20px 10px 10px 10px;
     margin: 10px 0;
     color: white;
+    overflow-wrap: break-word;
 }
 .message-right {
     width: 55%;
@@ -185,6 +186,7 @@ p.main-text {
     border-radius: 20px;
     padding: 20px 10px 10px 10px;
     margin: 10px 0;
+    overflow-wrap: break-word;
 }
 
 .message-text {
@@ -289,6 +291,15 @@ nav {
   padding: 14px 16px;
 }
 
+/* Media Queries */
+
+@media only screen and (max-width: 600px) {
+  .message-left,.message-right {
+    width: 75%;
+  }
+}
+
+/* animations */
 @keyframes grow {
     0% {transform: scale(0.8)}
     100% {transform: scale(1.0)}

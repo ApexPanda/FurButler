@@ -101,7 +101,7 @@ export default class Chat extends Component {
 
         <div className="container textarea-div message-input">
           <textarea className="text-area white" ref={node => this.input = node}></textarea>
-          <button className="btn-flat butlr-green-text" onClick={this.scrollToTop}>Back to top</button><button className="btn-flat butlr-green-text" onClick={this.scrollToBottom}>Back to bottom</button>
+          <button className="btn-flat butlr-green-text" onClick={this.scrollToTop}><span className="hide-on-med-and-down">Back to </span>top</button><button className="btn-flat butlr-green-text" onClick={this.scrollToBottom}><span className="hide-on-med-and-down">Back to </span>bottom</button>
           <button className="btn btn-info butlr-green font2 send-btn right" onClick={this.onAddMessage}>Send</button>
         </div>
 
