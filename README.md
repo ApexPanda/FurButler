@@ -36,7 +36,7 @@ Moved the login functionality into React, created functinal redirects between pa
 ###### Emily Robinson 
 ###### Github username: emssslay
 ###### Contributions:
-Setup backend API routes, pet routes and table, review routes and table, user routes and added to table. Also setup the models for each and validated the API was getting data from the database. Worked on getting the project deployed and the Messages page, functionality for the chats. 
+Setup backend API routes, pet/review/user routes and tables. Also setup the models for each and validated the API was getting data from the database. Worked on getting the project deployed, the messages output page, functionality for the chats.
 
 ## Challenges 
 Some challenges that we faced were getting the app deployed onto heroku, finding a chat application to integrate with, converting our previous project into React, and changing profiles using React state.

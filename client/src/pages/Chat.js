@@ -13,7 +13,8 @@ export default class Chat extends Component {
     this.state = {
       messages: [],
       username: '',
-      id: ''
+      id: '',
+      room: ''
     };
 
     this.onAddMessage = this.onAddMessage.bind(this);
@@ -21,6 +22,7 @@ export default class Chat extends Component {
 
   componentDidMount() {
     sessionStorage.setItem("receiverId", this.state.receiverID);
+    sessionStorage.setItem("rooms", this.state.room);
 }
 
   componentWillMount() {
@@ -52,6 +54,7 @@ export default class Chat extends Component {
   onAddMessage(event) {
     event.preventDefault();
     database.ref('messages').push({ text: this.input.value, user: this.state.username, id: this.state.id, receiverID: this.state.receiverID, date: d });
+    database.ref('rooms').push({ roomNumber: this.state.room+1, text: this.input.value, user: this.state.username, id: this.state.id, receiverID: this.state.receiverID, date: d });
     this.input.value = '';
   }
 
