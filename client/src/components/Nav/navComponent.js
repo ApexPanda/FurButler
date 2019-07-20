@@ -26,6 +26,12 @@ class Nav extends Component {
 
     }
 
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to={`/profile/${this.state.sessionId}`} />;
+        }
+    }
+
     componentDidUpdate() {
         M.AutoInit();
     }
@@ -74,18 +80,11 @@ class Nav extends Component {
             }
         });
     }
-    
-renderRedirect = () => {    
-    const changePage = this.state.redirect;
-    if (changePage === true) {
-        return <Redirect to={`/profile/${this.state.sessionId}`} />;
-    }
-}
 
     render() {
         return (
             <>
-            {this.renderRedirect()}
+                {this.renderRedirect()}
                 {/* Main Dropdown Structure */}
                 < ul id="dropdown1" className="dropdown-content" >
                     <li><a href="/results/Walker">Walkers</a></li>
