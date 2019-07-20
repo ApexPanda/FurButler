@@ -9,11 +9,14 @@ class ResultProfile extends Component {
     state = {
         profileLink: "/profile/" + this.props.id,
         rating: null,
-        isMobile: true
+        isMobile: null
     };
 
     componentDidMount() {
         this.loadRating();
+        this.setState({
+            isMobile: window.innerWidth < 600
+        });
         window.addEventListener('resize', () => {
             this.setState({
                 isMobile: window.innerWidth < 600

@@ -13,7 +13,8 @@ export default class Chat extends Component {
     this.state = {
       messages: [],
       username: '',
-      id: ''
+      id: '',
+      room: ''
     };
 
     this.onAddMessage = this.onAddMessage.bind(this);
@@ -21,6 +22,8 @@ export default class Chat extends Component {
 
   componentDidMount() {
     sessionStorage.setItem("receiverId", this.state.receiverID);
+    // sessionStorage.setItem("room", this.state.room);
+    console.log(this.state)
   }
 
   componentWillMount() {
@@ -32,6 +35,23 @@ export default class Chat extends Component {
 
     const receiverID = parseInt(this.props.match.params.id);
     this.setState({ receiverID: receiverID ? receiverID : 'Unknown' })
+
+    // const room = parseInt(this.props.match.params.id);
+    // this.setState({ room: room ? room : 'Unknown' })
+
+    // const roomsRef = database.ref('rooms')
+    //   .orderByKey()
+    //   .limitToLast(1);
+
+    //   roomsRef.on('value', snapshot => {
+    //   let roomsObj = snapshot.val();
+    //   let rooms = [];
+    //   Object.keys(roomsObj).forEach(key => rooms.push(roomsObj[key]));
+    //   rooms = rooms.map((room) => { return { text: room.text, user: room.user, date: room.date, id: room.key, roomNumber: room.room } })
+    //   this.setState(prevState => ({
+    //     rooms: rooms+1,
+    //   }));
+    // });
 
 
     const messagesRef = database.ref('messages')
@@ -52,6 +72,7 @@ export default class Chat extends Component {
   onAddMessage(event) {
     event.preventDefault();
     database.ref('messages').push({ text: this.input.value, user: this.state.username, id: this.state.id, receiverID: this.state.receiverID, date: d });
+    database.ref('rooms').push({ roomNumber: this.state.room, text: this.input.value, user: this.state.username, id: this.state.id, receiverID: this.state.receiverID, date: d });
     this.input.value = '';
 
     this.scrollToBottom();

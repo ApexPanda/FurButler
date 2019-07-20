@@ -7,7 +7,7 @@ class PetDiv extends Component {
     state = {
         rating: null,
         editing: false,
-        isMobile: true
+        isMobile: null
     };
 
     // test
@@ -21,6 +21,9 @@ class PetDiv extends Component {
     // end
 
     componentDidMount() {
+        this.setState({
+            isMobile: window.innerWidth < 600
+        });
         window.addEventListener('resize', () => {
             this.setState({
                 isMobile: window.innerWidth < 600

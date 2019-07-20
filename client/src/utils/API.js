@@ -62,9 +62,9 @@ export default {
     getRating: function (owner_id) {
         return axios.get("/api/reviews/avgRating/" + owner_id);
     },
-    // Gets chat by id 
+    // Gets chat by id and room
     getChats: function (id) {
-        return axios.get("/api/chats" + id);
+        return axios.get("/api/chats/" + id);
     },
 
 
