@@ -53,6 +53,10 @@ p.main-text {
   min-height: 1000% !important;
 }
 
+.font-120{
+  font-size: 120% !important;
+}
+
 .font-200{
   font-size: 150% !important;
 }
@@ -161,6 +165,12 @@ p.main-text {
 
 /* messages style */
 
+.grow{
+    animation: grow .5s;
+    animation-iteration-count: 1;
+    transform: scale(1.0);
+}
+
 .message-left {
     width: 55%;
     display: inline-block;
@@ -170,15 +180,17 @@ p.main-text {
     padding: 20px 10px 10px 10px;
     margin: 10px 0;
     color: white;
+    overflow-wrap: break-word;
 }
 .message-right {
     width: 55%;
-    float: right;
+    display: inline-block;
     border: 2px solid #dedede;
     background-color: whitesmoke;
     border-radius: 20px;
     padding: 20px 10px 10px 10px;
     margin: 10px 0;
+    overflow-wrap: break-word;
 }
 
 .message-text {
@@ -191,6 +203,19 @@ p.main-text {
   padding-right: 10px;
   font-size: 80%;
 }
+
+.message-input {
+  position: fixed;
+  bottom: 0;
+  padding: 20px;
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+.spacer {
+  height: 140px;
+}
+
 /* fur butlr colors */
 
 .butlr-pink {
@@ -254,10 +279,21 @@ nav {
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
+
+nav .dropdown-content a{
+
+color: #02c9a8 !important;
+}
+
+.sidenav .dropdown-content a{
+
+font-size: 16px !important;
+}
+
 .nav-wrapper {
   padding-left: 2em;
   padding-right: 2em;
-  font-size: 200%!important;
+  font-size: 200% !important;
 
 }
 
@@ -266,6 +302,44 @@ nav {
   background: none;
   outline: none;
   font-size: 16px;
-  color: #26a69a;
+  color: #02c9a8;
   padding: 14px 16px;
+}
+
+#user-logout-dropdown-side {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 14px 33px;
+  font-size: 16px;
+
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 600px) {
+  .message-left,.message-right {
+    width: 75%;
+  }
+
+  .nav-wrapper {
+    padding: 0px
+  }
+
+  .pet-image {
+    width:100%;
+    
+  }
+
+  .result-profile-image {
+    width:100%;
+    height:150px;
+  }
+
+}
+
+/* animations */
+@keyframes grow {
+    0% {transform: scale(0.8)}
+    100% {transform: scale(1.0)}
 }

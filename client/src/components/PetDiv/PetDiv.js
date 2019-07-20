@@ -6,7 +6,8 @@ import fish from "../../images/site/default-profile-3.jpg";
 class PetDiv extends Component {
     state = {
         rating: null,
-        editing: false
+        editing: false,
+        isMobile: null
     };
 
     // test
@@ -19,8 +20,20 @@ class PetDiv extends Component {
     }
     // end
 
+    componentDidMount() {
+        this.setState({
+            isMobile: window.innerWidth < 600
+        });
+        window.addEventListener('resize', () => {
+            this.setState({
+                isMobile: window.innerWidth < 600
+            });
+        }, false);
+    }
+
     render() {
 
+        const imageStyle = this.state.isMobile ? 'card butlr-blue white-text' : 'card horizontal butlr-blue white-text';
         const images = [dog, cat, fish]
         const placeHolder = images[Math.floor(Math.random() * images.length)]
         let divStyle;
@@ -53,7 +66,7 @@ class PetDiv extends Component {
                         <div>
                             <div className="col s12">
 
-                                <div className="card horizontal butlr-blue white-text">
+                                <div className={imageStyle}>
                                     <div className="card-image pet-image"
                                         style={divStyle}>
                                     </div>
@@ -61,7 +74,7 @@ class PetDiv extends Component {
                                         <div className="card-content">
                                             <span className="card-title butlr-green-text font3">{this.props.name}
                                                 {this.props.loggedIn && this.props.loginId === this.props.owner ? (
-                                                    <button className="btn-flat right butlr-yellow-text" onClick={this.handleEditOn}>EDIT<i
+                                                    <button className="btn-flat right butlr-yellow-text" onClick={this.handleEditOn}><span className="hide-on-small-only">EDIT</span><i
                                                         className="material-icons right">edit</i></button>
                                                 ) : null}</span>
 
