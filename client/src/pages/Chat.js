@@ -22,7 +22,7 @@ export default class Chat extends Component {
 
   componentDidMount() {
     sessionStorage.setItem("receiverId", this.state.receiverID);
-    sessionStorage.setItem("room", this.state.room);
+    // sessionStorage.setItem("room", this.state.room);
     console.log(this.state)
   }
 
@@ -36,22 +36,22 @@ export default class Chat extends Component {
     const receiverID = parseInt(this.props.match.params.id);
     this.setState({ receiverID: receiverID ? receiverID : 'Unknown' })
 
-    const room = sessionStorage.getItem('room');
-    this.setState({ room: room ? room : 'Unknown' })
+    // const room = parseInt(this.props.match.params.id);
+    // this.setState({ room: room ? room : 'Unknown' })
 
-    const roomsRef = database.ref('rooms')
-      .orderByKey()
-      .limitToLast(1);
+    // const roomsRef = database.ref('rooms')
+    //   .orderByKey()
+    //   .limitToLast(1);
 
-      roomsRef.on('value', snapshot => {
-      let roomsObj = snapshot.val();
-      let rooms = [];
-      Object.keys(roomsObj).forEach(key => rooms.push(roomsObj[key]));
-      rooms = rooms.map((room) => { return { text: room.text, user: room.user, date: room.date, id: room.key, roomNumber: room.room } })
-      this.setState(prevState => ({
-        rooms: rooms+1,
-      }));
-    });
+    //   roomsRef.on('value', snapshot => {
+    //   let roomsObj = snapshot.val();
+    //   let rooms = [];
+    //   Object.keys(roomsObj).forEach(key => rooms.push(roomsObj[key]));
+    //   rooms = rooms.map((room) => { return { text: room.text, user: room.user, date: room.date, id: room.key, roomNumber: room.room } })
+    //   this.setState(prevState => ({
+    //     rooms: rooms+1,
+    //   }));
+    // });
 
 
     const messagesRef = database.ref('messages')
@@ -61,11 +61,11 @@ export default class Chat extends Component {
     messagesRef.on('value', snapshot => {
       let messagesObj = snapshot.val();
       let messages = [];
-      Object.keys(messagesObj).forEach(key => messages.push(messagesObj[key]));
-      messages = messages.map((message) => { return { text: message.text, user: message.user, date: message.date, id: message.key } })
-      this.setState(prevState => ({
-        messages: messages,
-      }));
+        Object.keys(messagesObj).forEach(key => messages.push(messagesObj[key]));
+        messages = messages.map((message) => { return { text: message.text, user: message.user, date: message.date, id: message.key } })
+          this.setState(prevState => ({
+          messages: messages,
+        }));
     });
   }
 
