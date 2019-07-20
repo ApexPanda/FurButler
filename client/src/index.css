@@ -325,6 +325,12 @@ font-size: 16px !important;
   .nav-wrapper {
     padding: 0px
   }
+
+  .pet-image {
+    width:100%;
+    
+  }
+
 }
 
 /* animations */
