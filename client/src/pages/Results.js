@@ -14,7 +14,7 @@ class Results extends Component {
         console.log("update");
         console.log(this.props.match.params);
         console.log(this.state.role);
-        if (this.props.match.params.role != this.state.role) {
+        if (this.props.match.params.role !== this.state.role) {
             
             this.setState({
                 role: this.props.match.params.role
@@ -22,7 +22,7 @@ class Results extends Component {
             ()=> this.loadResults());
         }
     }
-    
+
     componentDidMount() {
         console.log("mount");
         this.loadResults();

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import M from 'materialize-css';
+import M from 'materialize-css';
 import API from "../utils/API";
 
 class Signup extends Component {
@@ -11,7 +11,7 @@ class Signup extends Component {
         password: "",
         passwordCheck: "",
         clientType: "petOwner",
-        jobTitle: "Owner" // HERE ==========================
+        jobTitle: "Owner"
     };
 
     handleInputChange = (event) => {
@@ -35,6 +35,13 @@ class Signup extends Component {
         });
     }
 
+    modalOpen = () => {
+        const elem = document.getElementById('modal1');
+        const instance = M.Modal.init(elem);
+        // setTimeout (function () {instance.open()}, 500);
+        instance.open();
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         const jobTitleChange = this.state.clientType === "petOwner" ? "Owner" : this.state.jobTitle;
@@ -55,7 +62,7 @@ class Signup extends Component {
             password: this.state.password
         };
 
-        if (this.state.clientType === "serviceProvider" && this.state.jobTitle === "Owner") { // HERE ==========================
+        if (this.state.clientType === "serviceProvider" && this.state.jobTitle === "Owner") {
             alert("Please select a job title");
         } else if (this.state.firstName.length === 0 || this.state.lastName.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
             alert("All fields must be filled out.");
@@ -71,9 +78,13 @@ class Signup extends Component {
                 .catch(function (error) {
                     console.log('axios error: ', error);
                 });
-        }
-        window.location.reload();
+        }        
+        
+        // window.location.reload();
+        this.modalOpen();
+        
     }
+            
 
     render() {
         return (
@@ -127,7 +138,7 @@ class Signup extends Component {
                             </div>
                             <div id="jobs-div" className="row margin hide">
                                 <div className="input-field col s12">
-                                    <select id="job-title" value="None" onChange={this.handleJobTitleChange}> {/* HERE ==========================*/}
+                                    <select id="job-title" value="None" onChange={this.handleJobTitleChange}>
                                         <option value="None" disabled>Select Option</option>
                                         <option value="Walker">Pet Walker</option>
                                         <option value="Groomer">Pet Groomer</option>
