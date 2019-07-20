@@ -28,6 +28,9 @@ class Nav extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
+            // this.setState({
+            //     redirect: false
+            // })
             return <Redirect to={`/profile/${this.state.sessionId}`} />;
         }
     }
@@ -87,23 +90,23 @@ class Nav extends Component {
                 {this.renderRedirect()}
                 {/* Main Dropdown Structure */}
                 < ul id="dropdown1" className="dropdown-content" >
-                    <li><a href="/results/Walker">Walkers</a></li>
-                    <li><a href="/results/Groomer">Groomers</a></li>
-                    <li><a href="/results/Sitter">Sitters</a></li>
-                    <li><a href="/results/Veterinarian">Veterinarians</a></li>
-                    <li><a href="/results/Kennel">Kennels</a></li>
-                    <li><a href="/results/Park">Pet Friendly Parks</a></li>
-                    <li><a href="/results/Owner">Pet Owners</a></li>
+                    <li><Link to="/results/Walker">Walkers</Link></li>
+                    <li><Link to="/results/Groomer">Groomers</Link></li>
+                    <li><Link to="/results/Sitter">Sitters</Link></li>
+                    <li><Link to="/results/Veterinarian">Veterinarians</Link></li>
+                    <li><Link to="/results/Kennel">Kennels</Link></li>
+                    <li><Link to="/results/Park">Pet Friendly Parks</Link></li>
+                    <li><Link to="/results/Owner">Pet Owners</Link></li>
                 </ul >
                 {/* collapsable sidebar */}
                 < ul id="dropdown2" className="dropdown-content" >
-                    <li><a href="/results/Walker">Walkers</a></li>
-                    <li><a href="/results/Groomer">Groomers</a></li>
-                    <li><a href="/results/Sitter">Sitters</a></li>
-                    <li><a href="/results/Veterinarian">Veterinarians</a></li>
-                    <li><a href="/results/Kennel">Kennels</a></li>
-                    <li><a href="/results/Park">Pet Friendly Parks</a></li>
-                    <li><a href="/results/Owner">Pet Owners</a></li>
+                    <li><Link to="/results/Walker">Walkers</Link></li>
+                    <li><Link to="/results/Groomer">Groomers</Link></li>
+                    <li><Link to="/results/Sitter">Sitters</Link></li>
+                    <li><Link to="/results/Veterinarian">Veterinarians</Link></li>
+                    <li><Link to="/results/Kennel">Kennels</Link></li>
+                    <li><Link to="/results/Park">Pet Friendly Parks</Link></li>
+                    <li><Link to="/results/Owner">Pet Owners</Link></li>
                 </ul >
                 {/* Dropdown if logged in */}
                 <ul id="dropdown3" className="dropdown-content">

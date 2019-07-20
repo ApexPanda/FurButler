@@ -191,7 +191,7 @@ router.get("/profile/:id", redirectLogin, function (req, res) {
   //   keywords: "pet grooming, pet sitting, pet walking, veterinarian services, kennel services, pet trainers, pet friendly parks",
   //   bg: "dashboard"
   // };
-  // res.render("/profile/:id");
+  res.render("/profile/:id");
   console.log("PROFILE SESSION: ", req.session);
   console.log("PROFILE userId: ", req.session.userId);
   res.end();
