@@ -84,14 +84,14 @@ class Nav extends Component {
                     <li><a href="/results/Owner">Pet Owners</a></li>
                 </ul >
                 {/* collapsable sidebar */}
-                < ul id="dropdown2" className="dropdown-content" >
-                    <li><a href="/results/Walker">Walkers</a></li>
-                    <li><a href="/results/Groomer">Groomers</a></li>
-                    <li><a href="/results/Sitter">Sitters</a></li>
-                    <li><a href="/results/Veterinarian">Veterinarians</a></li>
-                    <li><a href="/results/Kennel">Kennels</a></li>
-                    <li><a href="/results/Park">Pet Friendly Parks</a></li>
-                    <li><a href="/results/Owner">Pet Owners</a></li>
+                < ul id="dropdown2" className="dropdown-content font3" >
+                    <li><a href="/results/Walker" className="butlr-green-text">Walkers</a></li>
+                    <li><a href="/results/Groomer" className="butlr-green-text">Groomers</a></li>
+                    <li><a href="/results/Sitter" className="butlr-green-text">Sitters</a></li>
+                    <li><a href="/results/Veterinarian" className="butlr-green-text">Veterinarians</a></li>
+                    <li><a href="/results/Kennel" className="butlr-green-text">Kennels</a></li>
+                    <li><a href="/results/Park" className="butlr-green-text">Pet Friendly Parks</a></li>
+                    <li><a href="/results/Owner" className="butlr-green-text">Pet Owners</a></li>
                 </ul >
                 {/* Dropdown if logged in */}
                 <ul id="dropdown3" className="dropdown-content">
@@ -103,12 +103,22 @@ class Nav extends Component {
                         </form>
                     </li>
                 </ul>
+                {/* Dropdown if logged in */}
+                <ul id="dropdown4" className="dropdown-content font3">
+                    <li><a id="user-profile-link" href={`/profile/${this.state.sessionid}`} className="butlr-green-text">View Profile</a></li>{/* Figure out the paths and pages for these */}
+                    <li><a id="user-edit-link" href={`/chat`} className="butlr-green-text">Messages</a></li>
+                    <li>
+                        <form method="POST" action="/api/logout">
+                            <button className="butlr-green-text font3" id="user-logout-dropdown-side" type="submit" name="action">Logout</button>
+                        </form>
+                    </li>
+                </ul>
 
                 <nav className="transparent z-depth-0">
                     <div className="nav-wrapper font3">
                         <Link to="/" className="brand-logo"><img src={logo} alt="Logo" height="64" /></Link>
                         {/* collapse trigger */}
-                        <a href="#" data-target="mobile-collapse" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                        <a href="#" data-target="mobile-collapse" className="sidenav-trigger left"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
                             {/* Dropdown Trigger */}
                             <li><a className="dropdown-trigger waves-effect" href="#!" data-target="dropdown1"><i
@@ -117,7 +127,7 @@ class Nav extends Component {
                             {/* Changes options if logged in */}
                             {this.state.isLoggedIn ? (
                                 <>
-                                    <li className="login-show"><a id="session-name" className="dropdown-trigger waves-effect" href="#!"
+                                    <li className="login-show"><a className="dropdown-trigger waves-effect" href="#!"
                                         data-target="dropdown3">
                                         {this.state.sessionName}
                                         <i className="material-icons right">arrow_drop_down</i></a></li>
@@ -136,11 +146,26 @@ class Nav extends Component {
 
                 {/* collapsable sidebar */}
                 < ul className="sidenav" id="mobile-collapse" >
-                    <li><a className="dropdown-trigger-collapse" href="#!" data-target="dropdown2"><i
-                        className="material-icons left">search</i>Search
-            Options<i className="material-icons right">arrow_drop_down</i></a></li>
-                    <li className="logout-show"><a href="#modal1" className="modal-trigger">Logout</a></li>
-                    <li className="logout-show"><a href="/signUp">Sign-Up</a></li>
+                    <li><a className="dropdown-trigger butlr-green-text font3" href="#!" data-target="dropdown2"><i
+                        className="material-icons left butlr-green-text">search</i>Search
+            Options<i className="material-icons right butlr-green-text">arrow_drop_down</i></a></li>
+                    {/* Changes options if logged in */}
+                    {this.state.isLoggedIn ? (
+                        <>
+                            <li className="login-show">
+                                <a className="dropdown-trigger waves-effect butlr-green-text font3 font-120" href="#!"
+                                    data-target="dropdown4">
+                                    {this.state.sessionName}
+                                    <i className="material-icons right butlr-green-text">arrow_drop_down</i></a></li>
+
+                        </>
+                    ) : (
+                            <>
+                                {/* Modal Trigger */}
+                                <li className="logout-show"><a className="waves-effect modal-trigger butlr-green-text font3 font-120" href="#modal1">Login</a></li>
+                                <li className="logout-show"><a className="waves-effect butlr-green-text font3 font-120" href="/signUp">Sign-Up</a></li>
+                            </>
+                        )}
                 </ul >
                 {/* END NAVBAR ========================================== */}
 

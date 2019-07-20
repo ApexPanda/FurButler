@@ -53,6 +53,10 @@ p.main-text {
   min-height: 1000% !important;
 }
 
+.font-120{
+  font-size: 120% !important;
+}
+
 .font-200{
   font-size: 150% !important;
 }
@@ -275,10 +279,21 @@ nav {
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
+
+nav .dropdown-content a{
+
+color: #02c9a8 !important;
+}
+
+.sidenav .dropdown-content a{
+
+font-size: 16px !important;
+}
+
 .nav-wrapper {
   padding-left: 2em;
   padding-right: 2em;
-  font-size: 200%!important;
+  font-size: 200% !important;
 
 }
 
@@ -287,8 +302,17 @@ nav {
   background: none;
   outline: none;
   font-size: 16px;
-  color: #26a69a;
+  color: #02c9a8;
   padding: 14px 16px;
+}
+
+#user-logout-dropdown-side {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 14px 33px;
+  font-size: 16px;
+
 }
 
 /* Media Queries */
@@ -296,6 +320,10 @@ nav {
 @media only screen and (max-width: 600px) {
   .message-left,.message-right {
     width: 75%;
+  }
+
+  .nav-wrapper {
+    padding: 0px
   }
 }
 
