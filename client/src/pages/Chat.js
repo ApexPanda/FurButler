@@ -62,6 +62,10 @@ export default class Chat extends Component {
   //   scrollingElement.scrollTop = (scrollingElement.scrollHeight);
   // }
 
+  scrollToTop = () => {
+    this.messagesStart.scrollIntoView({ block: "end", inline: "nearest", behavior: "smooth" })
+  }
+
   scrollToBottom = () => {
     this.messagesEnd.scrollIntoView({ block: "end", inline: "nearest", behavior: "smooth" })
   }
@@ -79,6 +83,7 @@ export default class Chat extends Component {
       <div className="container">
         <div className="padding-13 messages-div">
           <h1 className="profile-heading white-text center font1">Chat Messages</h1>
+          <div ref={(el) => { this.messagesStart = el; }}></div>
           {this.state.messages.map((message) => {
             const _class = message.user === this.state.username ? 'message-left grow' : 'message-right grow right';
             return (
@@ -96,6 +101,7 @@ export default class Chat extends Component {
 
         <div className="container textarea-div message-input">
           <textarea className="text-area white" ref={node => this.input = node}></textarea>
+          <button className="btn-flat butlr-green-text" onClick={this.scrollToTop}>Back to top</button><button className="btn-flat butlr-green-text" onClick={this.scrollToBottom}>Back to bottom</button>
           <button className="btn btn-info butlr-green font2 send-btn right" onClick={this.onAddMessage}>Send</button>
         </div>
 
