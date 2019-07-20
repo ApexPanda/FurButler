@@ -331,6 +331,11 @@ font-size: 16px !important;
     
   }
 
+  .result-profile-image {
+    width:100%;
+    height:150px;
+  }
+
 }
 
 /* animations */
