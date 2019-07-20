@@ -80,7 +80,7 @@ export default class Chat extends Component {
     return (
       <div className="container">
         <div className="padding-13 messages-div">
-          <h1 className="profile-heading white-text center font1">Chat Messages</h1>
+          <h1 className="profile-heading white-text center font1">Chat Room</h1>
           {this.state.messages.map((message) => {
             const _class = message.user === this.state.username ? 'message-left' : 'message-right';
             return (
