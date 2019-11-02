@@ -39,6 +39,6 @@
     "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
-    "sequelize": "^5.9.0"
+    "sequelize": "^5.15.1"
   }
 }
